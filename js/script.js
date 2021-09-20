@@ -34,15 +34,14 @@ darkAside.appendChild(themeBtn);
 
 const courses = ["Pizza", "Pasta", "Desserts", "Drinks"];
 
-for (elem of courses){
-    const course = document.createElement("section");
-    course.classList.add(elem);
-    document.querySelector("main").appendChild(course);
-    const title = document.createElement("h2");
-    const name = document.createTextNode(elem);
-    title.appendChild(name);
-    course.appendChild(title);
-
+for (elem of courses) {
+  const course = document.createElement("section");
+  course.classList.add(elem);
+  document.querySelector("main").appendChild(course);
+  const title = document.createElement("h2");
+  const name = document.createTextNode(elem);
+  title.appendChild(name);
+  course.appendChild(title);
 }
 
 for (let elem of MENU) {
@@ -70,18 +69,17 @@ for (let elem of MENU) {
   price.innerHTML = "€" + elem.price;
   dish.appendChild(price);
 
+  const buy = document.createElement("button");
+  buy.innerHTML = "Add to cart";
+  dish.appendChild(buy);
 
-    const buy = document.createElement("button");
-    buy.innerHTML = "Add to cart";
-    dish.appendChild(buy);
-
-    if (elem.type === 'Pizza'){
-        document.getElementsByClassName("Pizza")[0].appendChild(dish);
-    } else if (elem.type === 'Pasta'){
-        document.getElementsByClassName("Pasta")[0].appendChild(dish);
-    } else if (elem.type === 'Dessert'){
-        document.getElementsByClassName("Desserts")[0].appendChild(dish);
-    } else if (elem.type === 'Drink'){
-        document.getElementsByClassName("Drinks")[0].appendChild(dish);
-    }
+  if (elem.type === "Pizza") {
+    document.getElementsByClassName("Pizza")[0].appendChild(dish);
+  } else if (elem.type === "Pasta") {
+    document.getElementsByClassName("Pasta")[0].appendChild(dish);
+  } else if (elem.type === "Desserts") {
+    document.getElementsByClassName("Desserts")[0].appendChild(dish);
+  } else if (elem.type === "Drink") {
+    document.getElementsByClassName("Drinks")[0].appendChild(dish);
+  }
 }
