@@ -1,0 +1,9 @@
+:root {
+  --lightColor: rgb(245, 240, 240);
+  --darkColor: rgba(0, 0, 0, 0.75);
+}
+
+.darkTheme {
+  background: var(--darkColor);
+  color: var(--lightColor);
+}
