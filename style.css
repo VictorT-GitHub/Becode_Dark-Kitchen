@@ -49,6 +49,18 @@ ul {
   --darkColor: rgba(0, 0, 0, 0.75);
 }
 
+.themeBtn {
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  height: 65px;
+  width: 65px;
+  border-radius: 100%;
+  border: none;
+  background: var(--lightColor);
+  color: var(--darkColor);
+}
+
 .darkTheme {
   background: var(--darkColor);
   color: var(--lightColor);

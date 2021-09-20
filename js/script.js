@@ -4,7 +4,7 @@
 const themeBtn = document.createElement("button");
 
 // Add CLASS to the [themeBtn]
-//themeBtn.classList.add("");
+themeBtn.classList.add("themeBtn");
 themeBtn.classList.add("darkTheme");
 
 // Add Text in the [themeBtn]
@@ -12,23 +12,25 @@ themeBtn.innerHTML = "Go Dark";
 
 // Add [addEventListener] + [function] flechee qui switch theme dark/light
 themeBtn.addEventListener("click", () => {
-  themeBtn.classList.toggle("darkTheme");
+
+  const allBtn = document.querySelectorAll("button")
+  for (let btn of allBtn) {
+    btn.classList.toggle("darkTheme")
+  }
+
+  document.body.classList.toggle("darkTheme");
+
   // condition pour changer text "go dark" -> "go light"
   if (!themeBtn.classList.contains("darkTheme")) {
     themeBtn.innerHTML = "Go Light";
   } else if (themeBtn.classList.contains("darkTheme")) {
     themeBtn.innerHTML = "Go Dark";
   }
-
-  // document.body.classList.toggle("");
-  // for (let item of collection) {
-  //     .classList.toggle("darkTheme");
 });
 
 // Deplacement [themeBtn] in <aside>
-const darkAside = document.createElement("aside");
-document.querySelector("main").appendChild(darkAside);
-darkAside.appendChild(themeBtn);
+document.querySelector("aside").appendChild(themeBtn);
+document.querySelector("main").appendChild(document.querySelector("aside"));
 
 // ------------------------ CREATING SECTIONS -----------------------------
 
