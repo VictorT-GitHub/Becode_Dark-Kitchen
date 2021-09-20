@@ -34,6 +34,16 @@ main {
   justify-content: center;
   background-color: #929292;
 }
+
+button {
+  height: 35px;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  align-self: center;
+}
 :root {
   --lightColor: rgb(245, 240, 240);
   --darkColor: rgba(0, 0, 0, 0.75);
@@ -55,5 +65,8 @@ main {
   main {
     flex-wrap: wrap;
     flex-direction: column;
+  }
+  ul {
+    display: flex;
   }
 }
