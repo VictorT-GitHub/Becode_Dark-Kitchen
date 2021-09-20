@@ -5,15 +5,15 @@ const MENU = [
         categories = ['Vegetarian'],
         ingredients = ['Genoese pesto', 'pine nuts', 'olives'],
         price = 9,
-        image = "https://assets.afcdn.com/recipe/20200206/107152_origin.png"
+        image = "Images/Pizza-pesto-et-tomates-cerises-1-800x600.jpegs"
     },
     {
         type = 'Pizza',
         name = 'Sarda',
-        categories = ['Vegetarian'],
+        categories = ['Spicy'],
         ingredients = ['mozzarella', 'pecorino cheese', 'spicy salami'],
         price = 8,
-        image = "https://assets.afcdn.com/recipe/20200206/107152_origin.png"
+        image = "sarda.jpeg"
     },
     {
         type = 'Pizza',
@@ -21,7 +21,7 @@ const MENU = [
         categories = ['Vegetarian'],
         ingredients = ['mozzarella', 'anchovies', 'capers','oregano'],
         price = 9,
-        image = "https://assets.afcdn.com/recipe/20200206/107152_origin.png"
+        image = "Images/Pizza-Romana-1-800x477.jpeg"
     },
     {
         type = 'Pizza',
@@ -34,7 +34,7 @@ const MENU = [
     {
         type = 'Pizza',
         name = 'Four seasons pizza',
-        categories = ['Vegetarian'],
+        categories = [''],
         ingredients = ['artichokes', 'tomatoes', 'basil','mushrooms','ham'],
         price = 11,
         image = "Images/four-seasons-pizza.jpeg"
@@ -42,7 +42,7 @@ const MENU = [
     {
         type = 'Pasta',
         name = 'Pasta Carbonara',
-        categories = ['Vegetarian'],
+        categories = [''],
         ingredients = ['egg', 'lardons', 'Pecorino romano'],
         price = 8,
         image = "Images/pasta-carbonara_b-864x413.jpeg"
@@ -50,7 +50,7 @@ const MENU = [
     {
         type = 'Pasta',
         name = 'Spaghetti bolognese',
-        categories = ['Vegetarian'],
+        categories = [''],
         ingredients = ['beef', 'chopped tomatoes', 'garlic'],
         price = 8,
         image = "Images/bolognaise.jpeg"
@@ -58,7 +58,7 @@ const MENU = [
     {
         type = 'Pasta',
         name = 'Lasagna bolognese',
-        categories = ['Vegetarian'],
+        categories = [''],
         ingredients = ['mozzarella', 'tomato', 'beef'],
         price = 10,
         image = "Images/lasagna-bolognese.jpeg"
@@ -66,7 +66,7 @@ const MENU = [
     {
         type = 'Pasta',
         name = 'Cacio e pepe',
-        categories = ['Vegetarian'],
+        categories = [''],
         ingredients = ['pecorino romano', 'black pepper'],
         price = 9,
         image = "Images/Spaghetti-Cacio-e-Pepe-Pecorino-and-black-pepper-spaghetti_1200x800.jpeg"
