@@ -83,3 +83,15 @@ for (let elem of MENU) {
     document.getElementsByClassName("Drinks")[0].appendChild(dish);
   }
 }
+
+console.log(MENU);
+
+const select = document.querySelector(".select");
+const articleImages = document.querySelectorAll("article");
+function displayImages() {
+  for (const iterator of articleImages) {
+    iterator.style.display = "block";
+  }
+}
+
+select.addEventListener("click", displayImages);
