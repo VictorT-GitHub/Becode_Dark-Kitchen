@@ -34,7 +34,7 @@ const MENU = [
     {
         type = 'Pizza',
         name = 'Four seasons pizza',
-        categories = [''],
+        categories = ['Confort food'],
         ingredients = ['artichokes', 'tomatoes', 'basil','mushrooms','ham'],
         price = 11,
         image = "Images/four-seasons-pizza.jpeg"
@@ -42,7 +42,7 @@ const MENU = [
     {
         type = 'Pasta',
         name = 'Pasta Carbonara',
-        categories = [''],
+        categories = ['Confort food'],
         ingredients = ['egg', 'lardons', 'Pecorino romano'],
         price = 8,
         image = "Images/pasta-carbonara_b-864x413.jpeg"
@@ -50,7 +50,7 @@ const MENU = [
     {
         type = 'Pasta',
         name = 'Spaghetti bolognese',
-        categories = [''],
+        categories = ['Confort food'],
         ingredients = ['beef', 'chopped tomatoes', 'garlic'],
         price = 8,
         image = "Images/bolognaise.jpeg"
@@ -58,7 +58,7 @@ const MENU = [
     {
         type = 'Pasta',
         name = 'Lasagna bolognese',
-        categories = [''],
+        categories = ['Confort food'],
         ingredients = ['mozzarella', 'tomato', 'beef'],
         price = 10,
         image = "Images/lasagna-bolognese.jpeg"
@@ -66,7 +66,7 @@ const MENU = [
     {
         type = 'Pasta',
         name = 'Cacio e pepe',
-        categories = [''],
+        categories = ['Vegetarian'],
         ingredients = ['pecorino romano', 'black pepper'],
         price = 9,
         image = "Images/Spaghetti-Cacio-e-Pepe-Pecorino-and-black-pepper-spaghetti_1200x800.jpeg"
