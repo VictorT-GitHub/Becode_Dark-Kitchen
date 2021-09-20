@@ -4,7 +4,7 @@ const MENU = [
         name = 'Pesto Pizza',
         categories = ['Vegetarian'],
         ingredients = ['Genoese pesto', 'pine nuts', 'olives'],
-        price = 9,
+        price = 8,
         image = "Images/Pizza-pesto-et-tomates-cerises-1-800x600.jpegs"
     },
     {
@@ -12,7 +12,7 @@ const MENU = [
         name = 'Sarda',
         categories = ['Spicy'],
         ingredients = ['mozzarella', 'pecorino cheese', 'spicy salami'],
-        price = 8,
+        price = 9,
         image = "sarda.jpeg"
     },
     {
@@ -28,7 +28,7 @@ const MENU = [
         name = 'Pizza Napoletana',
         categories = ['Vegetarian'],
         ingredients = ['mozzarella', 'tomato', 'oregano','anchovies'],
-        price = 9,
+        price = 8,
         image = "Images/napoletana.jpeg"
     },
     {
