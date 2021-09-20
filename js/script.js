@@ -1,48 +1,29 @@
-const courses = ["Pizza", "Pasta", "Desserts", "Drinks"]
+// ------------------------ DARK/LIGHT THEME BTN -------------------------------
 
-for (elem of courses){
-    const docMain = document.querySelector("main");
-    const course = document.createElement("section");
-    course.classList.add(elem);
-    docMain.appendChild(course);
-    const title = document.createElement("h2");
-    const name = document.createTextNode(elem);
-    title.appendChild(name);
-    course.appendChild(title);
-}
+// Creation [themeBtn] Light/Dark Theme
+const themeBtn = document.createElement("button");
 
-for (let elem of MENU){
-    const dish = document.createElement("article");
+// Add CLASS to the [themeBtn]
+themeBtn.classList.add("");
+themeBtn.classList.add("darkTheme");
 
-    const figure = document.createElement("figure");
-    const image = document.createElement("img");
-    image.setAttribute("src", elem.image);
-    const caption = document.createElement("figcaption");
-    const name = document.createTextNode(elem.name);
-    figure.appendChild(image);
-    caption.appendChild(name);
-    figure.appendChild(caption);
-    dish.appendChild(figure);
+// Add Text in the [themeBtn]
+themeBtn.innerHTML = "Go Dark";
 
-    const info = document.createElement("p");
-    info.innerHTML = "Ingredients: ";
-    for (let i = 0; i < elem.ingredients.length - 1; i++){
-        info.innerHTML += elem.ingredients[i] + ", ";
-    }
-    info.innerHTML += elem.ingredients[elem.ingredients.length - 1];
-    dish.appendChild(info);
+    // Add [addEventListener] + [function] flechee qui switch theme dark/light
+    themeBtn.addEventListener('click', () => {
+        themeBtn.classList.toggle("darkTheme");
+        // condition pour changer text "go dark" -> "go light"
+        if (!themeBtn.classList.contains("darkTheme")){
+            themeBtn.innerHTML = "Go Light";
+        } else if (themeBtn.classList.contains("darkTheme")){
+            themeBtn.innerHTML = "Go Dark";
+            }
+        
+        // document.body.classList.toggle("");
+        // for (let item of collection) {
+        //     .classList.toggle("darkTheme");
+        });
 
-    const price = document.createElement("p");
-    price.innerHTML = "€" + elem.price;
-    dish.appendChild(price);
-
-    if (elem.type === 'Pizza'){
-        document.getElementsByClassName("Pizza")[0].appendChild(dish);
-    } else if (elem.type === 'Pasta'){
-        document.getElementsByClassName("Pasta")[0].appendChild(dish);
-    } else if (elem.type === 'Dessert'){
-        document.getElementsByClassName("Desserts")[0].appendChild(dish);
-    } else if (elem.type === 'Drink'){
-        document.getElementsByClassName("Drinks")[0].appendChild(dish);
-    }
-}
+// Deplacement [themeBtn] in <aside>
+document.querySelector("aside").appendChild(themeBtn);
