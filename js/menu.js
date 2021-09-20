@@ -5,7 +5,7 @@ const MENU = [
     categories: ["Vegetarian"],
     ingredients: ["Genoese pesto", "pine nuts", "olives"],
     price: 8,
-    image: "Images/Pizza-pesto-et-tomates-cerises-1-800x600.jpegs",
+    image: "Images/Pizza-pesto-et-tomates-cerises-1-800x600.jpeg",
   },
   {
     type: "Pizza",
@@ -13,7 +13,7 @@ const MENU = [
     categories: ["Spicy"],
     ingredients: ["mozzarella", "pecorino cheese", "spicy salami"],
     price: 9,
-    image: "sarda.jpeg",
+    image: "Images/sarda.jpeg",
   },
   {
     type: "Pizza",
@@ -87,7 +87,7 @@ const MENU = [
     categories: ["Desserts"],
     ingredients: ["nut milk", "honey", "strawberry jam"],
     price: 10,
-    image: "pannacotta.jpeg",
+    image: "Images/pannacotta.jpeg",
   },
   {
     type: "Desserts",
