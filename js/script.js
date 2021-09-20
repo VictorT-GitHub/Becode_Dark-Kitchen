@@ -10,20 +10,20 @@ themeBtn.classList.add("darkTheme");
 // Add Text in the [themeBtn]
 themeBtn.innerHTML = "Go Dark";
 
-    // Add [addEventListener] + [function] flechee qui switch theme dark/light
-    themeBtn.addEventListener('click', () => {
-        themeBtn.classList.toggle("darkTheme");
-        // condition pour changer text "go dark" -> "go light"
-        if (!themeBtn.classList.contains("darkTheme")){
-            themeBtn.innerHTML = "Go Light";
-        } else if (themeBtn.classList.contains("darkTheme")){
-            themeBtn.innerHTML = "Go Dark";
-            }
-        
-        // document.body.classList.toggle("");
-        // for (let item of collection) {
-        //     .classList.toggle("darkTheme");
-        });
+// Add [addEventListener] + [function] flechee qui switch theme dark/light
+themeBtn.addEventListener("click", () => {
+  themeBtn.classList.toggle("darkTheme");
+  // condition pour changer text "go dark" -> "go light"
+  if (!themeBtn.classList.contains("darkTheme")) {
+    themeBtn.innerHTML = "Go Light";
+  } else if (themeBtn.classList.contains("darkTheme")) {
+    themeBtn.innerHTML = "Go Dark";
+  }
+
+  // document.body.classList.toggle("");
+  // for (let item of collection) {
+  //     .classList.toggle("darkTheme");
+});
 
 // Deplacement [themeBtn] in <aside>
 const darkAside = document.createElement("aside");
@@ -32,7 +32,7 @@ darkAside.appendChild(themeBtn);
 
 // ------------------------ CREATING SECTIONS -----------------------------
 
-const courses = ["Pizza", "Pasta", "Desserts", "Drinks"]
+const courses = ["Pizza", "Pasta", "Desserts", "Drinks"];
 
 for (elem of courses){
     const course = document.createElement("section");
@@ -42,32 +42,34 @@ for (elem of courses){
     const name = document.createTextNode(elem);
     title.appendChild(name);
     course.appendChild(title);
+
 }
 
-for (let elem of MENU){
-    const dish = document.createElement("article");
+for (let elem of MENU) {
+  const dish = document.createElement("article");
 
-    const figure = document.createElement("figure");
-    const image = document.createElement("img");
-    image.setAttribute("src", elem.image);
-    const caption = document.createElement("figcaption");
-    const name = document.createTextNode(elem.name);
-    figure.appendChild(image);
-    caption.appendChild(name);
-    figure.appendChild(caption);
-    dish.appendChild(figure);
+  const figure = document.createElement("figure");
+  const image = document.createElement("img");
+  image.setAttribute("src", elem.image);
+  const caption = document.createElement("figcaption");
+  const name = document.createTextNode(elem.name);
+  figure.appendChild(image);
+  caption.appendChild(name);
+  figure.appendChild(caption);
+  dish.appendChild(figure);
 
-    const info = document.createElement("p");
-    info.innerHTML = "Ingredients: ";
-    for (let i = 0; i < elem.ingredients.length - 1; i++){
-        info.innerHTML += elem.ingredients[i] + ", ";
-    }
-    info.innerHTML += elem.ingredients[elem.ingredients.length - 1];
-    dish.appendChild(info);
+  const info = document.createElement("p");
+  info.innerHTML = "Ingredients: ";
+  for (let i = 0; i < elem.ingredients.length - 1; i++) {
+    info.innerHTML += elem.ingredients[i] + ", ";
+  }
+  info.innerHTML += elem.ingredients[elem.ingredients.length - 1];
+  dish.appendChild(info);
 
-    const price = document.createElement("p");
-    price.innerHTML = "€" + elem.price;
-    dish.appendChild(price);
+  const price = document.createElement("p");
+  price.innerHTML = "€" + elem.price;
+  dish.appendChild(price);
+
 
     const buy = document.createElement("button");
     buy.innerHTML = "Add to cart";
