@@ -1,7 +1,7 @@
 // ------------------------ DARK/LIGHT THEME BTN -------------------------------
 
 // Creation [themeBtn] Light/Dark Theme
-const themeBtn = document.createElement("button");
+const themeBtn = document.createElement("span");
 
 // Add CLASS to the [themeBtn]
 themeBtn.classList.add("");
