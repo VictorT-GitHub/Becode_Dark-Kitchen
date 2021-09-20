@@ -4,7 +4,7 @@
 const themeBtn = document.createElement("button");
 
 // Add CLASS to the [themeBtn]
-themeBtn.classList.add("");
+//themeBtn.classList.add("");
 themeBtn.classList.add("darkTheme");
 
 // Add Text in the [themeBtn]
@@ -26,17 +26,18 @@ themeBtn.innerHTML = "Go Dark";
         });
 
 // Deplacement [themeBtn] in <aside>
-document.querySelector("aside").appendChild(themeBtn);
+const darkAside = document.createElement("aside");
+document.querySelector("main").appendChild(darkAside);
+darkAside.appendChild(themeBtn);
 
 // ------------------------ CREATING SECTIONS -----------------------------
 
 const courses = ["Pizza", "Pasta", "Desserts", "Drinks"]
 
 for (elem of courses){
-    const docMain = document.querySelector("main");
     const course = document.createElement("section");
     course.classList.add(elem);
-    docMain.appendChild(course);
+    document.querySelector("main").appendChild(course);
     const title = document.createElement("h2");
     const name = document.createTextNode(elem);
     title.appendChild(name);
@@ -68,6 +69,10 @@ for (let elem of MENU){
     price.innerHTML = "€" + elem.price;
     dish.appendChild(price);
 
+    const buy = document.createElement("button");
+    buy.innerHTML = "Add to cart";
+    dish.appendChild(buy);
+
     if (elem.type === 'Pizza'){
         document.getElementsByClassName("Pizza")[0].appendChild(dish);
     } else if (elem.type === 'Pasta'){
@@ -77,3 +82,4 @@ for (let elem of MENU){
     } else if (elem.type === 'Drink'){
         document.getElementsByClassName("Drinks")[0].appendChild(dish);
     }
+}
