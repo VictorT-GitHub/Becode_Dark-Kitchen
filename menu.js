@@ -1,82 +1,74 @@
 const MENU = [
     {
         type = 'Pizza',
-        name = 'Margherita',
+        name = 'Pesto Pizza',
         categories = ['Vegetarian'],
-        ingredients = ['mozzarella', 'tomato', 'basil'],
+        ingredients = ['Genoese pesto', 'pine nuts', 'olives'],
+        price = 9,
+        image = "https://assets.afcdn.com/recipe/20200206/107152_origin.png"
+    },
+    {
+        type = 'Pizza',
+        name = 'Sarda',
+        categories = ['Vegetarian'],
+        ingredients = ['mozzarella', 'pecorino cheese', 'spicy salami'],
         price = 8,
         image = "https://assets.afcdn.com/recipe/20200206/107152_origin.png"
     },
     {
         type = 'Pizza',
-        name = 'Marinara',
-        categories = ['Vegetarian', 'Vegan'],
-        ingredients = ['tomato', 'garlic', 'oregano'],
-        price = 6,
-        image = "https://www.silviocicchi.com/pizzachef/wp-content/uploads/2015/02/m5.jpg"
-    },
-    {
-        type = 'Pizza',
-        name = 'Margherita',
+        name = 'Pizza Romana',
         categories = ['Vegetarian'],
-        ingredients = ['mozzarella', 'tomato', 'basil'],
-        price = 8,
+        ingredients = ['mozzarella', 'anchovies', 'capers','oregano'],
+        price = 9,
         image = "https://assets.afcdn.com/recipe/20200206/107152_origin.png"
     },
     {
         type = 'Pizza',
-        name = 'Margherita',
+        name = 'Pizza Napoletana',
         categories = ['Vegetarian'],
-        ingredients = ['mozzarella', 'tomato', 'basil'],
-        price = 8,
-        image = "https://assets.afcdn.com/recipe/20200206/107152_origin.png"
+        ingredients = ['mozzarella', 'tomato', 'oregano','anchovies'],
+        price = 9,
+        image = "Images/napoletana.jpeg"
     },
     {
         type = 'Pizza',
-        name = 'Margherita',
+        name = 'Four seasons pizza',
         categories = ['Vegetarian'],
-        ingredients = ['mozzarella', 'tomato', 'basil'],
-        price = 8,
-        image = "https://assets.afcdn.com/recipe/20200206/107152_origin.png"
+        ingredients = ['artichokes', 'tomatoes', 'basil','mushrooms','ham'],
+        price = 11,
+        image = "Images/four-seasons-pizza.jpeg"
     },
     {
-        type = 'Pizza',
-        name = 'Margherita',
+        type = 'Pasta',
+        name = 'Pasta Carbonara',
         categories = ['Vegetarian'],
-        ingredients = ['mozzarella', 'tomato', 'basil'],
+        ingredients = ['egg', 'lardons', 'Pecorino romano'],
         price = 8,
-        image = "https://assets.afcdn.com/recipe/20200206/107152_origin.png"
+        image = "Images/pasta-carbonara_b-864x413.jpeg"
     },
     {
-        type = 'Pizza',
-        name = 'Margherita',
+        type = 'Pasta',
+        name = 'Spaghetti bolognese',
         categories = ['Vegetarian'],
-        ingredients = ['mozzarella', 'tomato', 'basil'],
+        ingredients = ['beef', 'chopped tomatoes', 'garlic'],
         price = 8,
-        image = "https://assets.afcdn.com/recipe/20200206/107152_origin.png"
+        image = "Images/bolognaise.jpeg"
     },
     {
-        type = 'Pizza',
-        name = 'Margherita',
+        type = 'Pasta',
+        name = 'Lasagna bolognese',
         categories = ['Vegetarian'],
-        ingredients = ['mozzarella', 'tomato', 'basil'],
-        price = 8,
-        image = "https://assets.afcdn.com/recipe/20200206/107152_origin.png"
+        ingredients = ['mozzarella', 'tomato', 'beef'],
+        price = 10,
+        image = "Images/lasagna-bolognese.jpeg"
     },
     {
-        type = 'Pizza',
-        name = 'Margherita',
+        type = 'Pasta',
+        name = 'Cacio e pepe',
         categories = ['Vegetarian'],
-        ingredients = ['mozzarella', 'tomato', 'basil'],
-        price = 8,
-        image = "https://assets.afcdn.com/recipe/20200206/107152_origin.png"
+        ingredients = ['pecorino romano', 'black pepper'],
+        price = 9,
+        image = "Images/Spaghetti-Cacio-e-Pepe-Pecorino-and-black-pepper-spaghetti_1200x800.jpeg"
     },
-    {
-        type = 'Pizza',
-        name = 'Margherita',
-        categories = ['Vegetarian'],
-        ingredients = ['mozzarella', 'tomato', 'basil'],
-        price = 8,
-        image = "https://assets.afcdn.com/recipe/20200206/107152_origin.png"
-    }
 ]
