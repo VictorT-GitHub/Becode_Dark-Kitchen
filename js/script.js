@@ -113,26 +113,9 @@ function displaySection(e) {
           article.style.display = "none";
         }
       }
-
-
-      function displaySection(e) {
-        let type = e.target.classList[0];
-        const articles = document.querySelectorAll("article");
-        for (article of articles) {
-          parent = article.parentNode;
-          if (parent.classList.contains(type)) {
-            article.style.display = "block";
-          } else {
-            for (article of articles) {
-              let parent = article.parentNode;
-              if (parent.classList.contains(type + "Section")) {
-                article.style.display = "none";
-              }
-            }
-          }
-        }
-      }
-
+    }
+  }
+}
 
       function displayFiltered(e) {
         activate2(e);
@@ -170,7 +153,8 @@ function displaySection(e) {
 
       const courseList = document.createElement("ul");
       courseList.classList.add("meals");
-      document.querySelector(".selectMenu").appendChild(courseList);
+      const menuSelect = document.querySelector(".selectMenu");
+      menuSelect.appendChild(courseList);
 
       const menuArticles = document.createElement("section");
       menuArticles.classList.add("menuArticle");
@@ -247,7 +231,8 @@ function displaySection(e) {
 
       const filterList = document.createElement("ul");
       filterList.classList.add("filters");
-      document.querySelector(".selectMenu").appendChild(filterList);
+      const selectorMenu = document.querySelector(".selectMenu");
+      selectorMenu.appendChild(filterList);
       for (elem of filter) {
         const item = document.createElement("li");
         const itemBtn = document.createElement("a");
@@ -315,7 +300,6 @@ function displaySection(e) {
         } // else if (elem.type === "Drink") {
         //   document.getElementsByClassName("Drinks")[0].appendChild(dish);
       }
-    }
 
     const select = document.querySelector(".select");
     const articleImages = document.querySelectorAll("article");
@@ -328,10 +312,6 @@ function displaySection(e) {
     }
 
     select.addEventListener("click", displayImages);
-
-
-
-
 
 
 // ------------------------ SHOPPING CART (victor) --------------------------------------
@@ -395,4 +375,4 @@ for (let i = 0; i < cartBtns.length; i++) {
   cartBtns[i].addEventListener('click', () => {
     cartFunction(MENU[i]);
   } )
-};
+}
