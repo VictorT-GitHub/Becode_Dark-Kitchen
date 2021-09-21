@@ -94,45 +94,44 @@ function activate2(e) {
   }
 }
 
-function displaySection(e) {
-  activate(e);
+// function displaySection(e) {
+//   activate(e);
 
-  let type = e.target.classList[0];
-  const articles = document.querySelectorAll("article");
-  if (type === "All") {
-    for (article of articles) {
-      article.style.display = "flex";
-    }
-  } else {
-    if (e.target.classList.contains("active")) {
-      for (article of articles) {
-        let parent = article.parentNode;
-        if (parent.classList.contains(type + "Section")) {
-          article.style.display = "flex";
-        } else {
-          article.style.display = "none";
-        }
-      }
+//   let type = e.target.classList[0];
+//   const articles = document.querySelectorAll("article");
+//   if (type === "All") {
+//     for (article of articles) {
+//       article.style.display = "flex";
+//     }
+//   } else {
+//     if (e.target.classList.contains("active")) {
+//       for (article of articles) {
+//         let parent = article.parentNode;
+//         if (parent.classList.contains(type + "Section")) {
+//           article.style.display = "flex";
+//         } else {
+//           article.style.display = "none";
+//         }
+//       }}
 
 
-      function displaySection(e) {
-        let type = e.target.classList[0];
-        const articles = document.querySelectorAll("article");
-        for (article of articles) {
-          parent = article.parentNode;
-          if (parent.classList.contains(type)) {
-            article.style.display = "block";
-          } else {
-            for (article of articles) {
-              let parent = article.parentNode;
-              if (parent.classList.contains(type + "Section")) {
-                article.style.display = "none";
-              }
-            }
-          }
-        }
-      }
-
+//       function displaySection(e) {
+//         let type = e.target.classList[0];
+//         const articles = document.querySelectorAll("article");
+//         for (article of articles) {
+//           parent = article.parentNode;
+//           if (parent.classList.contains(type)) {
+//             article.style.display = "block";
+//           } else {
+//             for (article of articles) {
+//               let parent = article.parentNode;
+//               if (parent.classList.contains(type + "Section")) {
+//                 article.style.display = "none";
+//               }
+//             }
+//           }
+//         }
+//       }
 
       function displayFiltered(e) {
         activate2(e);
@@ -269,12 +268,12 @@ function displaySection(e) {
 
       //------------------------------ LEFT-SIDE NAV ----------------------------------
 
-      /* //console.log(MENU);
-    document.getElementsByClassName("Desserts")[0].appendChild(dish);
-  } // else if (elem.type === "Drink") {
+      //console.log(MENU);
+    // document.getElementsByClassName("Desserts")[0].appendChild(dish);
+  // else if (elem.type === "Drink") {
   //   document.getElementsByClassName("Drinks")[0].appendChild(dish);
   // }
-}*/
+
 
       for (let elem of MENU) {
         const dish = document.createElement("article");
@@ -315,7 +314,6 @@ function displaySection(e) {
         } // else if (elem.type === "Drink") {
         //   document.getElementsByClassName("Drinks")[0].appendChild(dish);
       }
-    }
 
     const select = document.querySelector(".select");
     const articleImages = document.querySelectorAll("article");
