@@ -47,7 +47,7 @@ function displaySection(e){
 
 // ------------------------ CREATING SECTIONS -----------------------------
 
-const courses = ["Pizza", "Pasta", "Desserts", "Drinks"];
+const courses = ["Pizza", "Pasta", "Desserts"];
 
 const nav = document.createElement("nav");
 const courseList = document.createElement("ul");
@@ -66,9 +66,9 @@ for (elem of courses) {
 
   const course = document.createElement("section");
   course.classList.add(elem);
-  document.querySelector("main").appendChild(course);
-}
 
+  document.querySelector(".menuArticle").appendChild(course);
+ 
 for (let elem of MENU) {
   const dish = document.createElement("article");
 
@@ -105,12 +105,11 @@ for (let elem of MENU) {
     document.getElementsByClassName("Pasta")[0].appendChild(dish);
   } else if (elem.type === "Desserts") {
     document.getElementsByClassName("Desserts")[0].appendChild(dish);
-  } else if (elem.type === "Drink") {
-    document.getElementsByClassName("Drinks")[0].appendChild(dish);
-  }
+  } // else if (elem.type === "Drink") {
+  //   document.getElementsByClassName("Drinks")[0].appendChild(dish);
+  // }
 }
 
-// console.log(MENU);
 
 const select = document.querySelector(".select");
 const articleImages = document.querySelectorAll("article");
