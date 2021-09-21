@@ -284,10 +284,10 @@ for (let elem of MENU) {
   price.innerHTML = "€" + elem.price;
   dish.appendChild(price);
 
-  const buy = document.createElement("button");
-  buy.classList.add("cartBtn"); // VICTOR ADD THIS CLASS [cartBtn] FOR THE SHOPPING CART
-  buy.innerHTML = "Add to cart";
-  dish.appendChild(buy);
+  // const buy = document.createElement("button");
+  // buy.classList.add("cartBtn"); // VICTOR ADD THIS CLASS [cartBtn] FOR THE SHOPPING CART
+  // buy.innerHTML = "Add to cart";
+  // dish.appendChild(buy);
 
   if (elem.type === "Pizza") {
     document.getElementsByClassName("Pizza")[0].appendChild(dish);
@@ -312,11 +312,12 @@ function displayImages() {
 select.addEventListener("click", displayImages);
 
 // ------------------------ SHOPPING CART (victor) --------------------------------------
-// Selection elements a pointer dans js
+// Selection elements a pointer dans js 
+let cartBtns = document.querySelectorAll(".cartBtn"); // Select all buy buttons
 const achatsContainer = document.getElementById("achats-container");
 
 // Creation FUNCTION [cartFunction]
-function cartFunction(MENU) {
+function cartFunction(leMenu) {
   // Creation article + Add class
   const newArticleCart = document.createElement("article");
   newArticleCart.classList.add("article-cart");
@@ -327,17 +328,17 @@ function cartFunction(MENU) {
 
   // Creation image pour article + Add src
   const newImageCart = document.createElement("img");
-  newImageCart.setAttribute("src", MENU.image);
+  newImageCart.setAttribute("src", leMenu.image);
   newImageCart.classList.add("article-cart");
 
   // Creation titre pour article
   const newTitleCart = document.createElement("h6");
-  newTitleCart.innerHTML = MENU.name;
+  newTitleCart.innerHTML = leMenu.name;
   newTitleCart.classList.add("article-cart");
 
   // Creation prix pour article
   const newPrixCart = document.createElement("h6");
-  newPrixCart.innerHTML = "€" + MENU.price;
+  newPrixCart.innerHTML = "€" + leMenu.price;
   newPrixCart.classList.add("article-cart");
 
   // Creation removeItem btn
@@ -364,12 +365,11 @@ function cartFunction(MENU) {
   console.log("test");
 }
 
-// Select all buy buttons
-let cartBtns = document.querySelectorAll(".cartBtn");
-
 // LOOP creation [eventListener] on each [cartBtn]
 for (let i = 0; i < cartBtns.length; i++) {
   cartBtns[i].addEventListener("click", () => {
+    console.log(MENU);
+    console.log(MENU[i]);
     cartFunction(MENU[i]);
-  });
+  })
 }

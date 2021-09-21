@@ -99,7 +99,9 @@ li a:hover {
   padding-left: 15px;
 }
 
-.PizzaSection, .PastaSection, .DessertsSection {
+.PizzaSection,
+.PastaSection,
+.DessertsSection {
   display: flex;
   flex-direction: row;
 }
@@ -144,12 +146,10 @@ li a:hover {
   border-radius: 999px;
   border: none;
 }
-
 .article-cart {
   margin: 0;
   padding: 0;
 }
-
 article.article-cart {
   display: flex;
   justify-content: space-around;
