@@ -11,7 +11,7 @@ body {
 }
 
 main {
-  background: gray;
+  background: rgba(104, 104, 104, 0.815);
 }
 
 aside {
@@ -40,8 +40,15 @@ header img {
 
 article img {
   object-fit: cover;
-  width: 300px;
+  width: 400px;
   height: 300px;
+}
+
+figure {
+  margin: 0;
+}
+figcaption {
+  margin: 10px;
 }
 
 article {
@@ -49,6 +56,8 @@ article {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  margin: 40px 10px;
+  background-color: aliceblue;
 }
 
 h3 {
@@ -97,24 +106,16 @@ li a:hover {
   flex-direction: column;
   padding-right: 15px;
   padding-left: 15px;
+  padding-bottom: 40px;
 }
 
-.PizzaSection, .PastaSection, .DessertsSection {
+.PizzaSection,
+.PastaSection,
+.DessertsSection {
   display: flex;
   flex-direction: row;
-}
-
-.Pizza {
-  display: flex;
   flex-wrap: wrap;
-}
-.Pasta {
-  display: flex;
-  flex-wrap: wrap;
-}
-.Desserts {
-  display: flex;
-  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 /* SHOPPING CART */
@@ -127,6 +128,7 @@ li a:hover {
   display: flex;
   justify-content: flex-end;
   overflow: hidden;
+  margin-right: 20px;
 }
 .disparu {
   width: 0;
@@ -143,6 +145,7 @@ li a:hover {
   width: 130px;
   border-radius: 999px;
   border: none;
+  margin: 15px 40px;
 }
 
 .article-cart {
@@ -181,6 +184,7 @@ img.article-cart {
 .darkTheme {
   background: var(--darkColor);
   color: var(--lightColor);
+  margin: 15px;
 }
 /*  */
 
