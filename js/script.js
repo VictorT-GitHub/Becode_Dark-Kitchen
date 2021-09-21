@@ -292,11 +292,11 @@ function displaySection(e) {
         dish.appendChild(buy);
 
         if (elem.type === "Pizza") {
-          document.getElementsByClassName("Pizza")[0].appendChild(dish);
+          document.getElementsByClassName("PizzaSection")[0].appendChild(dish);
         } else if (elem.type === "Pasta") {
-          document.getElementsByClassName("Pasta")[0].appendChild(dish);
+          document.getElementsByClassName("PastaSection")[0].appendChild(dish);
         } else if (elem.type === "Desserts") {
-          document.getElementsByClassName("Desserts")[0].appendChild(dish);
+          document.getElementsByClassName("DessertsSection")[0].appendChild(dish);
         } // else if (elem.type === "Drink") {
         //   document.getElementsByClassName("Drinks")[0].appendChild(dish);
       }
