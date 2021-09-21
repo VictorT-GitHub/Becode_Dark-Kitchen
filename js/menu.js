@@ -1,14 +1,6 @@
 const MENU = [
   {
     type: "Pizza",
-    name: "Pesto Pizza",
-    categories: ["Vegetarian"],
-    ingredients: ["Genoese pesto", "pine nuts", "olives"],
-    price: 8,
-    image: "Images/Pizza-pesto-et-tomates-cerises-1-800x600.jpeg",
-  },
-  {
-    type: "Pizza",
     name: "Sarda",
     categories: ["Spicy"],
     ingredients: ["mozzarella", "pecorino cheese", "spicy salami"],

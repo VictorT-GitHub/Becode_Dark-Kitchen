@@ -32,16 +32,16 @@ document.querySelector("aside").appendChild(themeBtn);
 
 // ------------------------ CREATING SECTIONS -----------------------------
 
-const courses = ["Pizza", "Pasta", "Desserts", "Drinks"];
+const courses = ["Pizza", "Pasta", "Desserts"];
 
 for (elem of courses) {
   const course = document.createElement("section");
   course.classList.add(elem);
-  document.querySelector("main").appendChild(course);
-  const title = document.createElement("h2");
-  const name = document.createTextNode(elem);
-  title.appendChild(name);
-  course.appendChild(title);
+  document.querySelector(".menuArticle").appendChild(course);
+  // // const title = document.createElement("h2");
+  // const name = document.createTextNode(elem);
+  // title.appendChild(name);
+  // course.appendChild(title);
 }
 
 for (let elem of MENU) {
@@ -79,12 +79,10 @@ for (let elem of MENU) {
     document.getElementsByClassName("Pasta")[0].appendChild(dish);
   } else if (elem.type === "Desserts") {
     document.getElementsByClassName("Desserts")[0].appendChild(dish);
-  } else if (elem.type === "Drink") {
-    document.getElementsByClassName("Drinks")[0].appendChild(dish);
-  }
+  } // else if (elem.type === "Drink") {
+  //   document.getElementsByClassName("Drinks")[0].appendChild(dish);
+  // }
 }
-
-console.log(MENU);
 
 const select = document.querySelector(".select");
 const articleImages = document.querySelectorAll("article");
