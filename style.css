@@ -218,8 +218,3 @@ nav > ul {
   display: flex;
   flex-direction: row;
 }
-
-.navMenu {
-  display: flex;
-  flex-direction: column;
-}
