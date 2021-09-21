@@ -37,7 +37,9 @@ header img {
   margin-right: 15px;
 }
 
+
 article img {
+
   width: 300px;
   height: 300px;
 }
@@ -149,4 +151,9 @@ li a:hover {
     padding: 0;
     margin: auto;
   }
+}
+
+nav > ul {
+  display: flex;
+  flex-direction: row;
 }

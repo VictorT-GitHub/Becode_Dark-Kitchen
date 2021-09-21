@@ -30,20 +30,45 @@ themeBtn.addEventListener("click", () => {
 // Deplacement [themeBtn] in <aside>
 document.querySelector("aside").appendChild(themeBtn);
 
+// ------------------------ FUNCTIONS -----------------------------
+
+function displaySection(e){
+  let type = e.target.classList[0];
+  const articles = document.querySelectorAll("article");
+  for (article of articles){
+    parent = article.parentNode;
+    if (parent.classList.contains(type)){
+      article.style.display = "block";
+    } else {
+      article.style.display = "none";
+    }
+  }
+}
+
 // ------------------------ CREATING SECTIONS -----------------------------
 
 const courses = ["Pizza", "Pasta", "Desserts"];
 
+const nav = document.createElement("nav");
+const courseList = document.createElement("ul");
+nav.appendChild(courseList);
+document.querySelector("main").appendChild(nav);
 for (elem of courses) {
+  const item = document.createElement("li");
+  const itemBtn = document.createElement("button");
+  itemBtn.classList.add(elem);
+  itemBtn.addEventListener("click", displaySection);
+  const name = document.createTextNode(elem);
+  itemBtn.appendChild(name);
+  item.appendChild(itemBtn);
+  courseList.appendChild(item);
+
+
   const course = document.createElement("section");
   course.classList.add(elem);
-  document.querySelector(".menuArticle").appendChild(course);
-  // // const title = document.createElement("h2");
-  // const name = document.createTextNode(elem);
-  // title.appendChild(name);
-  // course.appendChild(title);
-}
 
+  document.querySelector(".menuArticle").appendChild(course);
+ 
 for (let elem of MENU) {
   const dish = document.createElement("article");
 
@@ -70,6 +95,7 @@ for (let elem of MENU) {
   dish.appendChild(price);
 
   const buy = document.createElement("button");
+  buy.classList.add("cartBtn"); // VICTOR ADD THIS CLASS [cartBtn] FOR THE SHOPPING CART
   buy.innerHTML = "Add to cart";
   dish.appendChild(buy);
 
@@ -84,12 +110,26 @@ for (let elem of MENU) {
   // }
 }
 
+
 const select = document.querySelector(".select");
 const articleImages = document.querySelectorAll("article");
 function displayImages() {
-  for (const iterator of articleImages) {
-    iterator.style.display = "block";
+  if (select.innerHTML === "All"){
+    for (const iterator of articleImages) {
+      iterator.style.display = "block";
+    }
   }
 }
 
 select.addEventListener("click", displayImages);
+
+
+
+
+// ------------------------ SHOPPING CART --------------------------------------
+// Select all buy buttons
+let cartBtns = document.getElementsByClassName("cartBtn");
+
+for (let i = 0; i < cartBtns.length; i++) {
+  console.log(cartBtns[i]);
+};
