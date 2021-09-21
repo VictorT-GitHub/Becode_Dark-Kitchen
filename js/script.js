@@ -12,10 +12,9 @@ themeBtn.innerHTML = "Go Dark";
 
 // Add [addEventListener] + [function] flechee qui switch theme dark/light
 themeBtn.addEventListener("click", () => {
-
-  const allBtn = document.querySelectorAll("button")
+  const allBtn = document.querySelectorAll("button");
   for (let btn of allBtn) {
-    btn.classList.toggle("darkTheme")
+    btn.classList.toggle("darkTheme");
   }
 
   document.body.classList.toggle("darkTheme");
@@ -30,7 +29,6 @@ themeBtn.addEventListener("click", () => {
 
 // Deplacement [themeBtn] in <aside>
 document.querySelector("aside").appendChild(themeBtn);
-document.querySelector("main").appendChild(document.querySelector("aside"));
 
 // ------------------------ FUNCTIONS -----------------------------
 
