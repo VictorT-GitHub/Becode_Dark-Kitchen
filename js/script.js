@@ -99,19 +99,13 @@ function displaySection(e) {
 
   let type = e.target.classList[0];
   const articles = document.querySelectorAll("article");
-  if (type === "All") {
+  if (e.target.classList.contains("active")) {
     for (article of articles) {
-      article.style.display = "flex";
-    }
-  } else {
-    if (e.target.classList.contains("active")) {
-      for (article of articles) {
-        let parent = article.parentNode;
-        if (parent.classList.contains(type + "Section")) {
-          article.style.display = "flex";
-        } else {
-          article.style.display = "none";
-        }
+      let parent = article.parentNode;
+      if (parent.classList.contains(type + "Section")) {
+        article.style.display = "flex";
+      } else {
+        article.style.display = "none";
       }
     }
   }
@@ -178,6 +172,7 @@ for (elem of courses) {
 
 for (let elem of MENU) {
   const dish = document.createElement("article");
+  dish.classList.add("food");
 
   for (let feature of elem.categories) {
     if (feature === "Comfort food") {
@@ -213,7 +208,8 @@ for (let elem of MENU) {
   buy.innerHTML = "Add to cart";
   dish.appendChild(buy);
 
-  document.getElementsByClassName("AllSection")[0].appendChild(dish);
+  const cloned = dish.cloneNode(true);
+  document.getElementsByClassName("AllSection")[0].appendChild(cloned);
   if (elem.type === "Pizza") {
     document.getElementsByClassName("PizzaSection")[0].appendChild(dish);
   } else if (elem.type === "Pasta") {
