@@ -145,18 +145,6 @@ li a:hover {
   display: flex;
   justify-content: space-between;
 }
-#asideCache {
-  display: flex;
-  justify-content: flex-end;
-  overflow: hidden;
-  margin-right: 20px;
-}
-.disparu {
-  width: 0;
-}
-#shopping-cart-section {
-  background: rgba(0, 0, 0, 0.1);
-}
 #shopping-cart-btn {
   font-family: "Red hat display";
   text-decoration: none;
@@ -169,19 +157,43 @@ li a:hover {
   border: none;
   margin: 15px 40px;
 }
+#asideCache {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20px;
+}
+#shopping-cart-section {
+  padding: 5px 0px;
+  width: 240px;
+  background: rgba(0, 0, 0, 0.1);
+}
+#shopping-cart-section.disparu {
+  overflow: hidden;
+  width: 0px;
+}
+#cart-list-btns {
+  display: flex;
+  justify-content: space-around;
+}
+#total-price,
+#cart-list-btns {
+  padding: 5px 0px;
+}
 .article-cart {
   margin: 0;
   padding: 0;
 }
 article.article-cart {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  padding: 5px 0px;
 }
 img.article-cart {
   width: 80px;
   height: 80px;
   border-radius: 100%;
+  margin-right: 10px;
 }
 /*  */
 

@@ -308,16 +308,24 @@ function displayImages() {
 select.addEventListener("click", displayImages);
 
 // ------------------------ SHOPPING CART (victor) --------------------------------------
-// Selection elements a pointer dans js 
+// Selection elements a pointer dans js
 let cartBtns = document.querySelectorAll(".cartBtn"); // Select all buy buttons
-const achatsContainer = document.getElementById("achats-container");
+let achatsContainer = document.querySelector("#achats-container");
+let clearAll = document.querySelectorAll(".clearAll"); // Select all .clearAll buttons
+let shoppingCartBtn = document.querySelector("#shopping-cart-btn");
 
+// -- CREATION FUNCTIONS --
+// Creation FUNCTION [disparuFunction] for display the shopping-cart
+function disparuFunction() {
+  achatsContainer.parentNode.classList.toggle('disparu');
+  }
 // Creation FUNCTION [cartFunction]
 function cartFunction(leMenu) {
   // Creation article + Add class
   const newArticleCart = document.createElement("article");
+  newArticleCart.classList.add("article-test");
   newArticleCart.classList.add("article-cart");
-
+  
   // Creation 2 DIV pour flex img/infos
   const newDivImg = document.createElement("div");
   const newDivInfos = document.createElement("div");
@@ -326,17 +334,17 @@ function cartFunction(leMenu) {
   const newImageCart = document.createElement("img");
   newImageCart.setAttribute("src", leMenu.image);
   newImageCart.classList.add("article-cart");
-
+  
   // Creation titre pour article
   const newTitleCart = document.createElement("h6");
   newTitleCart.innerHTML = leMenu.name;
   newTitleCart.classList.add("article-cart");
-
+  
   // Creation prix pour article
   const newPrixCart = document.createElement("h6");
   newPrixCart.innerHTML = "€" + leMenu.price;
   newPrixCart.classList.add("article-cart");
-
+  
   // Creation removeItem btn
   const removeItemBtn = document.createElement("button");
   removeItemBtn.innerText = "Remove";
@@ -344,28 +352,45 @@ function cartFunction(leMenu) {
   removeItemBtn.addEventListener("click", () => {
     newArticleCart.remove();
   });
-
+  
   // Deplacement img + titre + prix + removeBtn dans la DIV correspondante
   newDivImg.appendChild(newImageCart);
   newDivInfos.appendChild(newTitleCart);
   newDivInfos.appendChild(newPrixCart);
   newDivInfos.appendChild(removeItemBtn);
-
+  
   // Deplacement des 2 DIV dans [newArticleCart]
   newArticleCart.appendChild(newDivImg);
   newArticleCart.appendChild(newDivInfos);
-
+  
   // Deplacement de [newArticleCart] dans <div.achats-container>
   achatsContainer.appendChild(newArticleCart);
-
-  console.log("test");
 }
 
-// LOOP creation [eventListener] on each [cartBtn]
+// -- CREATION EVENTLISTENER --
+// LOOP creation [eventListener] on each [cartBtn]  ===>>>  Function for call cartFunction
 for (let i = 0; i < cartBtns.length; i++) {
   cartBtns[i].addEventListener("click", () => {
-    console.log(MENU);
-    console.log(MENU[i]);
     cartFunction(MENU[i]);
   })
 }
+// LOOP creation [eventListener] on each [clearAll] button  ===>>>  Function for clear shopping list + call disparuFunction + display an alert
+for (let boutton of clearAll) {
+  boutton.addEventListener('click', (i) => {
+    disparuFunction();
+
+    if (i.target.innerHTML == "acheter" && achatsContainer.hasChildNodes()) {
+      alert("Commande enregistrée, vous allez être redirigé vers la page de votre banque pour effectuer le paiement.")
+    } else if (i.target.innerHTML == "clear cart" && achatsContainer.hasChildNodes()) {
+      alert("Panier supprimé !")}
+    
+    let articleTest = document.querySelectorAll(".article-test"); // ? QUESTION POUR LE COACH
+    for (let elem of articleTest) {
+      elem.remove();
+    }
+  })
+}
+// Creation [eventListener] on #shopping-cart-btn  ===>>>  Function for call disparuFunction
+shoppingCartBtn.addEventListener('click', () => {
+  disparuFunction();
+})
