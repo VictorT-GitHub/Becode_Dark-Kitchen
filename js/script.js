@@ -94,25 +94,25 @@ function activate2(e) {
   }
 }
 
-// function displaySection(e) {
-//   activate(e);
+function displaySection(e) {
+  activate(e);
 
-//   let type = e.target.classList[0];
-//   const articles = document.querySelectorAll("article");
-//   if (type === "All") {
-//     for (article of articles) {
-//       article.style.display = "flex";
-//     }
-//   } else {
-//     if (e.target.classList.contains("active")) {
-//       for (article of articles) {
-//         let parent = article.parentNode;
-//         if (parent.classList.contains(type + "Section")) {
-//           article.style.display = "flex";
-//         } else {
-//           article.style.display = "none";
-//         }
-//       }}
+  let type = e.target.classList[0];
+  const articles = document.querySelectorAll("article");
+  if (type === "All") {
+    for (article of articles) {
+      article.style.display = "flex";
+    }
+  } else {
+    if (e.target.classList.contains("active")) {
+      for (article of articles) {
+        let parent = article.parentNode;
+        if (parent.classList.contains(type + "Section")) {
+          article.style.display = "flex";
+        } else {
+          article.style.display = "none";
+        }
+      }}
 
 
 //       function displaySection(e) {
