@@ -161,7 +161,6 @@ nav > ul {
     margin: auto;
   }
 }
-}
 
 @media screen and (min-width: 768px) and (max-width: 1440px) {
   .mainMenu {
@@ -172,9 +171,4 @@ nav > ul {
 nav > ul {
   display: flex;
   flex-direction: row;
-}
-
-.navMenu {
-  display: flex;
-  flex-direction: column;
 }
