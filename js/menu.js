@@ -1,14 +1,6 @@
 const MENU = [
   {
     type: "Pizza",
-    name: "Pesto Pizza",
-    categories: ["Vegetarian"],
-    ingredients: ["Genoese pesto", "pine nuts", "olives"],
-    price: 8,
-    image: "Images/Pizza-pesto-et-tomates-cerises-1-800x600.jpeg",
-  },
-  {
-    type: "Pizza",
     name: "Sarda",
     categories: ["Spicy"],
     ingredients: ["mozzarella", "pecorino cheese", "spicy salami"],
@@ -34,7 +26,7 @@ const MENU = [
   {
     type: "Pizza",
     name: "Four seasons pizza",
-    categories: ["Confort food"],
+    categories: ["Comfort food"],
     ingredients: ["artichokes", "tomatoes", "basil", "mushrooms", "ham"],
     price: 11,
     image: "Images/four-seasons-pizza.jpeg",
@@ -42,7 +34,7 @@ const MENU = [
   {
     type: "Pasta",
     name: "Pasta Carbonara",
-    categories: ["Confort food"],
+    categories: ["Comfort food"],
     ingredients: ["egg", "lardons", "Pecorino romano"],
     price: 8,
     image: "Images/pasta-carbonara_b-864x413.jpeg",
@@ -50,7 +42,7 @@ const MENU = [
   {
     type: "Pasta",
     name: "Spaghetti bolognese",
-    categories: ["Confort food"],
+    categories: ["Comfort food"],
     ingredients: ["beef", "chopped tomatoes", "garlic"],
     price: 8,
     image: "Images/bolognaise.jpeg",
@@ -58,7 +50,7 @@ const MENU = [
   {
     type: "Pasta",
     name: "Lasagna bolognese",
-    categories: ["Confort food"],
+    categories: ["Comfort food"],
     ingredients: ["mozzarella", "tomato", "beef"],
     price: 10,
     image: "Images/lasagna-bolognese.jpeg",
