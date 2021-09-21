@@ -21,6 +21,7 @@ header img {
 }
 
 img {
+  object-fit: cover;
   width: 300px;
   height: 300px;
 }
@@ -33,6 +34,16 @@ main {
   display: flex;
   justify-content: center;
   background-color: #929292;
+}
+
+button {
+  height: 35px;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  align-self: center;
 }
 :root {
   --lightColor: rgb(245, 240, 240);
@@ -68,4 +79,12 @@ main {
     flex-wrap: wrap;
     flex-direction: column;
   }
+  ul {
+    display: flex;
+  }
+}
+
+nav > ul {
+  display: flex;
+  flex-direction: row;
 }
