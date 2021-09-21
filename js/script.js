@@ -72,6 +72,7 @@ for (let elem of MENU) {
   dish.appendChild(price);
 
   const buy = document.createElement("button");
+  buy.classList.add("cartBtn"); // VICTOR ADD THIS CLASS [cartBtn] FOR THE SHOPPING CART
   buy.innerHTML = "Add to cart";
   dish.appendChild(buy);
 
@@ -86,7 +87,7 @@ for (let elem of MENU) {
   }
 }
 
-console.log(MENU);
+// console.log(MENU);
 
 const select = document.querySelector(".select");
 const articleImages = document.querySelectorAll("article");
@@ -97,3 +98,14 @@ function displayImages() {
 }
 
 select.addEventListener("click", displayImages);
+
+
+
+
+// ------------------------ SHOPPING CART --------------------------------------
+// Select all buy buttons
+let cartBtns = document.getElementsByClassName("cartBtn");
+
+for (let i = 0; i < cartBtns.length; i++) {
+  console.log(cartBtns[i]);
+};
