@@ -37,9 +37,7 @@ header img {
   margin-right: 15px;
 }
 
-
 article img {
-
   width: 300px;
   height: 300px;
 }
@@ -80,7 +78,6 @@ li a:hover {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
-  width: 1000px;
 }
 
 .selectMenu {
@@ -150,6 +147,12 @@ li a:hover {
     max-width: 720px;
     padding: 0;
     margin: auto;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1440px) {
+  .mainMenu {
+    width: 1000px;
   }
 }
 
