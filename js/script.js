@@ -12,10 +12,9 @@ themeBtn.innerHTML = "Go Dark";
 
 // Add [addEventListener] + [function] flechee qui switch theme dark/light
 themeBtn.addEventListener("click", () => {
-
-  const allBtn = document.querySelectorAll("button")
+  const allBtn = document.querySelectorAll("button");
   for (let btn of allBtn) {
-    btn.classList.toggle("darkTheme")
+    btn.classList.toggle("darkTheme");
   }
 
   document.body.classList.toggle("darkTheme");
@@ -30,7 +29,6 @@ themeBtn.addEventListener("click", () => {
 
 // Deplacement [themeBtn] in <aside>
 document.querySelector("aside").appendChild(themeBtn);
-document.querySelector("main").appendChild(document.querySelector("aside"));
 
 // ------------------------ FUNCTIONS -----------------------------
 
@@ -101,8 +99,8 @@ function displaySection(e){
   if (e.target.classList.contains("active")){
     for (article of articles){
       let parent = article.parentNode;
-      if (parent.classList.contains(type)){
-        article.style.display = "block";
+      if (parent.classList.contains(type + "Section")){
+        article.style.display = "flex";
       } else {
         article.style.display = "none";
       }
@@ -110,7 +108,7 @@ function displaySection(e){
   } else {
     for (article of articles){
       let parent = article.parentNode;
-      if (parent.classList.contains(type)){
+      if (parent.classList.contains(type + "Section")){
         article.style.display = "none";
       }
     }
@@ -126,7 +124,7 @@ function displayFiltered(e){
     for (article of articles){
       if (article.classList.contains(filter)){
         article.classList.add("active");
-        article.style.display = "block";
+        article.style.display = "flex";
       } else {
         article.style.display = "none";
       }
@@ -146,15 +144,19 @@ function displayFiltered(e){
 
 // ------------------------ CREATING SECTIONS -----------------------------
 
-const courses = ["Pizza", "Pasta", "Desserts", "Drinks"];
+const courses = ["Pizza", "Pasta", "Desserts"];
 
-const nav = document.createElement("nav");
 const courseList = document.createElement("ul");
-nav.appendChild(courseList);
-document.querySelector("main").appendChild(nav);
+courseList.classList.add("meals");
+document.querySelector(".selectMenu").appendChild(courseList);
+
+const menuArticles = document.createElement("section");
+menuArticles.classList.add("menuArticle");
+
 for (elem of courses) {
   const item = document.createElement("li");
-  const itemBtn = document.createElement("button");
+  const itemBtn = document.createElement("a");
+  itemBtn.setAttribute("href", "#");
   itemBtn.classList.add(elem);
   itemBtn.classList.add("inactive");
   itemBtn.addEventListener("click", displaySection);
@@ -165,10 +167,10 @@ for (elem of courses) {
 
 
   const course = document.createElement("section");
-  course.classList.add(elem);
-  document.querySelector("main").appendChild(course);
+  course.classList.add(elem + "Section");
+  document.querySelector(".menuArticle").appendChild(course);
 }
-
+ 
 for (let elem of MENU) {
   const dish = document.createElement("article");
 
@@ -202,17 +204,16 @@ for (let elem of MENU) {
   dish.appendChild(price);
 
   const buy = document.createElement("button");
+  buy.classList.add("cartBtn"); // VICTOR ADD THIS CLASS [cartBtn] FOR THE SHOPPING CART
   buy.innerHTML = "Add to cart";
   dish.appendChild(buy);
 
   if (elem.type === "Pizza") {
-    document.getElementsByClassName("Pizza")[1].appendChild(dish);
+    document.getElementsByClassName("PizzaSection")[0].appendChild(dish);
   } else if (elem.type === "Pasta") {
-    document.getElementsByClassName("Pasta")[1].appendChild(dish);
+    document.getElementsByClassName("PastaSection")[0].appendChild(dish);
   } else if (elem.type === "Desserts") {
-    document.getElementsByClassName("Desserts")[1].appendChild(dish);
-  } else if (elem.type === "Drink") {
-    document.getElementsByClassName("Drinks")[1].appendChild(dish);
+    document.getElementsByClassName("DessertsSection")[0].appendChild(dish);
   }
 }
 
@@ -222,10 +223,11 @@ const filter = ["Vegetarian", "Spicy", "Comfort Food"];
 
 const filterList = document.createElement("ul");
 filterList.classList.add("filters");
-nav.appendChild(filterList);
+document.querySelector(".selectMenu").appendChild(filterList);
 for (elem of filter) {
   const item = document.createElement("li");
-  const itemBtn = document.createElement("button");
+  const itemBtn = document.createElement("a");
+  itemBtn.setAttribute("href", "#");
   const name = document.createTextNode(elem);
   if (elem === "Comfort Food"){
     elem = "Comfort";
@@ -240,7 +242,13 @@ for (elem of filter) {
 
 //------------------------------ LEFT-SIDE NAV ----------------------------------
 
-//console.log(MENU);
+/* //console.log(MENU);
+    document.getElementsByClassName("Desserts")[0].appendChild(dish);
+  } // else if (elem.type === "Drink") {
+  //   document.getElementsByClassName("Drinks")[0].appendChild(dish);
+  // }
+}*/
+
 
 const select = document.querySelector(".select");
 const articleImages = document.querySelectorAll("article");
@@ -253,3 +261,14 @@ function displayImages() {
 }
 
 select.addEventListener("click", displayImages);
+
+
+
+
+// ------------------------ SHOPPING CART --------------------------------------
+// Select all buy buttons
+let cartBtns = document.getElementsByClassName("cartBtn");
+
+for (let i = 0; i < cartBtns.length; i++) {
+  console.log(cartBtns[i]);
+}
