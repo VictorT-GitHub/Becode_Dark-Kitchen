@@ -155,3 +155,8 @@ li a:hover {
     width: 1000px;
   }
 }
+
+nav > ul {
+  display: flex;
+  flex-direction: row;
+}
