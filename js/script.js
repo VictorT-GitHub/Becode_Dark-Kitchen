@@ -34,15 +34,112 @@ document.querySelector("main").appendChild(document.querySelector("aside"));
 
 // ------------------------ FUNCTIONS -----------------------------
 
+function prevSiblings(target) {
+  var siblings = [], n = target;
+  while(n = n.previousElementSibling) siblings.push(n);
+  return siblings;
+}
+
+function nextSiblings(target) {
+  var siblings = [], n = target;
+  while(n = n.nextElementSibling) siblings.push(n);
+  return siblings;
+}
+
+function getSiblings(target) {
+   var prev = prevSiblings(target) || [],
+       next = nextSiblings(target) || [];
+   return prev.concat(next);
+}
+
+function activate(e){
+  if (e.target.classList.contains("inactive")){
+    e.target.classList.remove("inactive");
+    e.target.classList.add("active");
+    e.target.style.background = "green";
+    e.target.style.color = "white";
+  } else {
+    e.target.classList.remove("active");
+    e.target.classList.add("inactive");
+    e.target.style.background = "inherit";
+    e.target.style.color = "inherit";
+  }
+
+  let siblings = getSiblings(e.target.parentNode);
+  console.log(e.target.parentNode);
+  console.log(siblings);
+  for (let sibling of siblings){
+    if (sibling.firstChild.classList.contains("active")){
+      sibling.firstChild.classList.remove("active");
+      sibling.firstChild.classList.add("inactive");
+      sibling.firstChild.style.background = "inherit";
+      sibling.firstChild.style.color = "inherit";
+    }
+
+  }
+}
+
+function activate2(e){
+  if (e.target.classList.contains("inactive")){
+    e.target.classList.remove("inactive");
+    e.target.classList.add("active");
+    e.target.style.background = "green";
+    e.target.style.color = "white";
+  } else {
+    e.target.classList.remove("active");
+    e.target.classList.add("inactive");
+    e.target.style.background = "inherit";
+    e.target.style.color = "inherit";
+  }
+}
+
 function displaySection(e){
+  activate(e);
+
   let type = e.target.classList[0];
   const articles = document.querySelectorAll("article");
-  for (article of articles){
-    parent = article.parentNode;
-    if (parent.classList.contains(type)){
-      article.style.display = "block";
-    } else {
-      article.style.display = "none";
+  if (e.target.classList.contains("active")){
+    for (article of articles){
+      let parent = article.parentNode;
+      if (parent.classList.contains(type)){
+        article.style.display = "block";
+      } else {
+        article.style.display = "none";
+      }
+    }
+  } else {
+    for (article of articles){
+      let parent = article.parentNode;
+      if (parent.classList.contains(type)){
+        article.style.display = "none";
+      }
+    }
+  }
+}
+
+function displayFiltered(e){
+  activate2(e);
+  console.log(e.target.classList);
+  let filter = e.target.classList[0];
+  const articles = document.querySelectorAll("article");
+  if (e.target.classList[1] === "active"){
+    for (article of articles){
+      if (article.classList.contains(filter)){
+        article.classList.add("active");
+        article.style.display = "block";
+      } else {
+        article.style.display = "none";
+      }
+    }
+  } else {
+    for (article of articles){
+      let parent = article.parentNode;
+      if (article.classList.contains(filter)){
+        article.classList.remove("active");
+      }
+      if (article.classList.contains(filter) && parent.classList.contains("inactive")){
+        article.style.display = "none";
+      }
     }
   }
 }
@@ -59,6 +156,7 @@ for (elem of courses) {
   const item = document.createElement("li");
   const itemBtn = document.createElement("button");
   itemBtn.classList.add(elem);
+  itemBtn.classList.add("inactive");
   itemBtn.addEventListener("click", displaySection);
   const name = document.createTextNode(elem);
   itemBtn.appendChild(name);
@@ -73,6 +171,13 @@ for (elem of courses) {
 
 for (let elem of MENU) {
   const dish = document.createElement("article");
+
+  for (let feature of elem.categories){
+    if (feature === "Comfort food"){
+      feature = "Comfort"
+    }
+    dish.classList.add(feature);
+  }
 
   const figure = document.createElement("figure");
   const image = document.createElement("img");
@@ -101,15 +206,39 @@ for (let elem of MENU) {
   dish.appendChild(buy);
 
   if (elem.type === "Pizza") {
-    document.getElementsByClassName("Pizza")[0].appendChild(dish);
+    document.getElementsByClassName("Pizza")[1].appendChild(dish);
   } else if (elem.type === "Pasta") {
-    document.getElementsByClassName("Pasta")[0].appendChild(dish);
+    document.getElementsByClassName("Pasta")[1].appendChild(dish);
   } else if (elem.type === "Desserts") {
-    document.getElementsByClassName("Desserts")[0].appendChild(dish);
+    document.getElementsByClassName("Desserts")[1].appendChild(dish);
   } else if (elem.type === "Drink") {
-    document.getElementsByClassName("Drinks")[0].appendChild(dish);
+    document.getElementsByClassName("Drinks")[1].appendChild(dish);
   }
 }
+
+//-------------------------------- EXTRA FILTER BUTTONS --------------------------
+
+const filter = ["Vegetarian", "Spicy", "Comfort Food"];
+
+const filterList = document.createElement("ul");
+filterList.classList.add("filters");
+nav.appendChild(filterList);
+for (elem of filter) {
+  const item = document.createElement("li");
+  const itemBtn = document.createElement("button");
+  const name = document.createTextNode(elem);
+  if (elem === "Comfort Food"){
+    elem = "Comfort";
+  }
+  itemBtn.classList.add(elem);
+  itemBtn.classList.add("inactive");
+  itemBtn.appendChild(name);
+  item.appendChild(itemBtn);
+  filterList.appendChild(item);
+  itemBtn.addEventListener("click", displayFiltered);
+}
+
+//------------------------------ LEFT-SIDE NAV ----------------------------------
 
 //console.log(MENU);
 

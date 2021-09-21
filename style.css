@@ -67,6 +67,16 @@ ul {
   color: var(--lightColor);
 }
 
+nav > ul {
+  display: flex;
+  flex-direction: row;
+}
+
+ul > button {
+  
+  
+}
+
 @media screen and (max-width: 768px) {
   header {
     height: 400px;
@@ -82,9 +92,4 @@ ul {
   ul {
     display: flex;
   }
-}
-
-nav > ul {
-  display: flex;
-  flex-direction: row;
 }
