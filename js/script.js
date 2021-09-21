@@ -1,4 +1,4 @@
-// ------------------------ DARK/LIGHT THEME BTN -------------------------------
+// ------------------------ DARK/LIGHT THEME BTN (victor)-------------------------------
 
 // Creation [themeBtn] Light/Dark Theme
 const themeBtn = document.createElement("button");
@@ -28,7 +28,9 @@ themeBtn.addEventListener("click", () => {
 });
 
 // Deplacement [themeBtn] in <aside>
-document.querySelector("aside").appendChild(themeBtn);
+const shoppingcartBtn = document.getElementById('shopping-cart-btn');
+const vraiAside = document.getElementById('vraiAside');
+vraiAside.insertBefore(themeBtn, shoppingcartBtn);
 
 // ------------------------ FUNCTIONS -----------------------------
 
@@ -127,10 +129,65 @@ select.addEventListener("click", displayImages);
 
 
 
-// ------------------------ SHOPPING CART --------------------------------------
-// Select all buy buttons
-let cartBtns = document.getElementsByClassName("cartBtn");
+// ------------------------ SHOPPING CART (victor) --------------------------------------
+// Selection elements a pointer dans js 
+const achatsContainer = document.getElementById('achats-container');
 
+// Creation FUNCTION [cartFunction]
+function cartFunction(MENU) {
+  // Creation article + Add class
+  const newArticleCart = document.createElement('article');
+  newArticleCart.classList.add('article-cart');
+  
+  // Creation 2 DIV pour flex img/infos
+  const newDivImg = document.createElement('div');
+  const newDivInfos = document.createElement('div');
+
+  // Creation image pour article + Add src
+  const newImageCart = document.createElement('img');
+  newImageCart.setAttribute("src", MENU.image);
+  newImageCart.classList.add('article-cart');
+
+  // Creation titre pour article
+  const newTitleCart = document.createElement('h6');
+  newTitleCart.innerHTML = MENU.name;
+  newTitleCart.classList.add('article-cart');
+
+  // Creation prix pour article
+  const newPrixCart = document.createElement('h6');
+  newPrixCart.innerHTML = "€" + MENU.price;
+  newPrixCart.classList.add('article-cart');
+
+  // Creation removeItem btn
+  const removeItemBtn = document.createElement('button');
+  removeItemBtn.innerText = "Remove";
+  removeItemBtn.classList.add('article-cart');
+  removeItemBtn.addEventListener('click', () => { 
+    newArticleCart.remove();
+  })
+  
+  // Deplacement img + titre + prix + removeBtn dans la DIV correspondante
+  newDivImg.appendChild(newImageCart);
+  newDivInfos.appendChild(newTitleCart);
+  newDivInfos.appendChild(newPrixCart);
+  newDivInfos.appendChild(removeItemBtn);
+
+  // Deplacement des 2 DIV dans [newArticleCart]
+  newArticleCart.appendChild(newDivImg);
+  newArticleCart.appendChild(newDivInfos);
+
+  // Deplacement de [newArticleCart] dans <div.achats-container>
+  achatsContainer.appendChild(newArticleCart);
+
+  console.log("test");
+}
+
+// Select all buy buttons
+let cartBtns = document.querySelectorAll(".cartBtn");
+
+// LOOP creation [eventListener] on each [cartBtn]
 for (let i = 0; i < cartBtns.length; i++) {
-  console.log(cartBtns[i]);
+  cartBtns[i].addEventListener('click', () => {
+    cartFunction(MENU[i]);
+  } )
 };
