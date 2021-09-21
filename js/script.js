@@ -113,6 +113,7 @@ function displaySection(e) {
           article.style.display = "none";
         }
       }
+      }
 
 
       function displaySection(e) {
