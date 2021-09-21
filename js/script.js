@@ -96,22 +96,29 @@ function displaySection(e){
 
   let type = e.target.classList[0];
   const articles = document.querySelectorAll("article");
-  if (e.target.classList.contains("active")){
+  if (type === "All"){
     for (article of articles){
-      let parent = article.parentNode;
-      if (parent.classList.contains(type + "Section")){
-        article.style.display = "flex";
-      } else {
-        article.style.display = "none";
-      }
+      article.style.display = "flex";
     }
   } else {
-    for (article of articles){
-      let parent = article.parentNode;
-      if (parent.classList.contains(type + "Section")){
-        article.style.display = "none";
+    if (e.target.classList.contains("active")){
+      for (article of articles){
+        let parent = article.parentNode;
+        if (parent.classList.contains(type + "Section")){
+          article.style.display = "flex";
+        } else {
+          article.style.display = "none";
+        }
+      }
+    } else {
+      for (article of articles){
+        let parent = article.parentNode;
+        if (parent.classList.contains(type + "Section")){
+          article.style.display = "none";
+        }
       }
     }
+
   }
 }
 
@@ -144,7 +151,7 @@ function displayFiltered(e){
 
 // ------------------------ CREATING SECTIONS -----------------------------
 
-const courses = ["Pizza", "Pasta", "Desserts"];
+const courses = ["All", "Pizza", "Pasta", "Desserts"];
 
 const courseList = document.createElement("ul");
 courseList.classList.add("meals");
@@ -208,6 +215,7 @@ for (let elem of MENU) {
   buy.innerHTML = "Add to cart";
   dish.appendChild(buy);
 
+  document.getElementsByClassName("AllSection")[0].appendChild(dish);
   if (elem.type === "Pizza") {
     document.getElementsByClassName("PizzaSection")[0].appendChild(dish);
   } else if (elem.type === "Pasta") {
@@ -227,13 +235,16 @@ document.querySelector(".selectMenu").appendChild(filterList);
 for (elem of filter) {
   const item = document.createElement("li");
   const itemBtn = document.createElement("a");
+  const image = document.createElement("img");
   itemBtn.setAttribute("href", "#");
   const name = document.createTextNode(elem);
   if (elem === "Comfort Food"){
     elem = "Comfort";
   }
+  image.setAttribute("src", "./Images/" + elem + ".png")
   itemBtn.classList.add(elem);
   itemBtn.classList.add("inactive");
+  itemBtn.appendChild(image);
   itemBtn.appendChild(name);
   item.appendChild(itemBtn);
   filterList.appendChild(item);
