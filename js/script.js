@@ -112,8 +112,8 @@ function displaySection(e) {
         } else {
           article.style.display = "none";
         }
-      }}
-
+      }}}
+}
 
 //       function displaySection(e) {
 //         let type = e.target.classList[0];
