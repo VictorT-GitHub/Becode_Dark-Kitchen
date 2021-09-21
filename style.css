@@ -15,6 +15,7 @@ main {
 }
 
 aside {
+  width: 100vw;
   position: absolute;
   float: left;
   margin: 14px 14px 14px 0px;
@@ -111,11 +112,56 @@ li a:hover {
   flex-wrap: wrap;
 }
 
+/* SHOPPING CART */
+#vraiAside {
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+}
+#asideCache {
+  display: flex;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+.disparu {
+  width: 0;
+}
+#shopping-cart-section {
+  background: rgba(0, 0, 0, 0.1);
+}
+#shopping-cart-btn {
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 0;
+  height: 65px;
+  width: 130px;
+  border-radius: 999px;
+  border: none;
+}
+
+.article-cart {
+  margin: 0;
+  padding: 0;
+}
+
+article.article-cart {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+img.article-cart {
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+}
+/*  */
+
+/* DARK/LIGHT MODE */
 :root {
   --lightColor: rgb(245, 240, 240);
   --darkColor: rgba(0, 0, 0, 0.75);
 }
-
 .themeBtn {
   text-decoration: none;
   cursor: pointer;
@@ -127,11 +173,11 @@ li a:hover {
   background: var(--lightColor);
   color: var(--darkColor);
 }
-
 .darkTheme {
   background: var(--darkColor);
   color: var(--lightColor);
 }
+/*  */
 
 nav > ul {
   display: flex;
