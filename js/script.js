@@ -252,6 +252,67 @@ for (elem of filter) {
   itemBtn.addEventListener("click", displayFiltered);
 }
 
+//------------------------------ LEFT-SIDE NAV ----------------------------------
+
+// /* //console.log(MENU);
+//     document.getElementsByClassName("Desserts")[0].appendChild(dish);
+//   } // else if (elem.type === "Drink") {
+//   //   document.getElementsByClassName("Drinks")[0].appendChild(dish);
+//   // }
+// }*/
+
+// for (let elem of MENU) {
+//   const dish = document.createElement("article");
+
+//   const figure = document.createElement("figure");
+//   const image = document.createElement("img");
+//   image.setAttribute("src", elem.image);
+//   const caption = document.createElement("figcaption");
+//   const name = document.createTextNode(elem.name);
+//   figure.appendChild(image);
+//   caption.appendChild(name);
+//   figure.appendChild(caption);
+//   dish.appendChild(figure);
+
+//   const info = document.createElement("p");
+//   info.innerHTML = "Ingredients: ";
+//   for (let i = 0; i < elem.ingredients.length - 1; i++) {
+//     info.innerHTML += elem.ingredients[i] + ", ";
+//   }
+//   info.innerHTML += elem.ingredients[elem.ingredients.length - 1];
+//   dish.appendChild(info);
+
+//   const price = document.createElement("p");
+//   price.innerHTML = "€" + elem.price;
+//   dish.appendChild(price);
+
+//   // const buy = document.createElement("button");
+//   // buy.classList.add("cartBtn"); // VICTOR ADD THIS CLASS [cartBtn] FOR THE SHOPPING CART
+//   // buy.innerHTML = "Add to cart";
+//   // dish.appendChild(buy);
+
+//   if (elem.type === "Pizza") {
+//     document.getElementsByClassName("Pizza")[0].appendChild(dish);
+//   } else if (elem.type === "Pasta") {
+//     document.getElementsByClassName("Pasta")[0].appendChild(dish);
+//   } else if (elem.type === "Desserts") {
+//     document.getElementsByClassName("Desserts")[0].appendChild(dish);
+//   } // else if (elem.type === "Drink") {
+//   //   document.getElementsByClassName("Drinks")[0].appendChild(dish);
+// }
+
+// // const select = document.querySelector(".select");
+// // const articleImages = document.querySelectorAll("article");
+// // function displayImages() {
+// //   if (select.innerHTML === "All") {
+// //     for (const iterator of articleImages) {
+// //       iterator.style.display = "block";
+// //     }
+// //   }
+// // }
+
+// // select.addEventListener("click", displayImages);
+
 // ------------------------ SHOPPING CART (victor) --------------------------------------
 let arrayRespons = [];
 
@@ -273,14 +334,14 @@ function disparuFunction() {
 }
 // Creation FUNCTION [cartFunction]
 function cartFunction(leMenu) {
-console.log(leMenu);
+  console.log(leMenu);
   arrayRespons.push(leMenu);
-console.log(leMenu);
+  console.log(leMenu);
   // Creation article + Add class
   const newArticleCart = document.createElement("article");
   newArticleCart.classList.add("article-test");
   newArticleCart.classList.add("article-cart");
-  
+
   // Creation 4 DIV pour flex: nombreitem/img/infos/removeBtn
   const newDivNombreItem = document.createElement("div");
   const newDivImg = document.createElement("div");
@@ -296,7 +357,7 @@ console.log(leMenu);
   const newTitleCart = document.createElement("h6");
   newTitleCart.innerHTML = leMenu.name;
   newTitleCart.classList.add("article-cart");
-  
+
   // Creation prix pour article + Add the item PRICE to the TOTAL
   const newPrixCart = document.createElement("h6");
   newPrixCart.innerHTML = "€" + leMenu.price;
@@ -319,13 +380,13 @@ console.log(leMenu);
   newDivInfos.appendChild(newTitleCart);
   newDivInfos.appendChild(newPrixCart);
   newDivRemoveBtn.appendChild(removeItemBtn);
-  
+
   // Deplacement des 4 DIV dans [newArticleCart]
   newArticleCart.appendChild(newDivNombreItem);
   newArticleCart.appendChild(newDivImg);
   newArticleCart.appendChild(newDivInfos);
   newArticleCart.appendChild(newDivRemoveBtn);
-  
+
   // Deplacement de [newArticleCart] dans <div.achats-container>
   achatsContainer.appendChild(newArticleCart);
 

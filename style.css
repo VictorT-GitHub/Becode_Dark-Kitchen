@@ -84,6 +84,59 @@ h3 {
   font-weight: 900;
 }
 
+.special {
+  margin: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+button > p {
+  margin: 0px;
+  margin-top: 15px;
+}
+
+.buttonArrow > img {
+  margin: 0px;
+  margin-top: 13px;
+}
+
+.buttonArrow {
+  display: flex;
+}
+
+.textSpecial {
+  margin: 35px;
+  margin-right: 140px;
+}
+
+.pizzaSpecial {
+  background-image: url(./Images/feuilledor.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 435px;
+  height: 185px;
+  border-radius: 12px;
+  box-shadow: 8px 8px 20px rgb(65, 65, 65);
+}
+
+.pizzaSpecial > p {
+  margin-left: 30px;
+  color: white;
+  text-shadow: 1px 0 0 rgb(0, 0, 0), -1px 0 0 rgb(0, 0, 0), 0 1px 0 rgb(0, 0, 0),
+    0 -1px 0 rgb(0, 0, 0), 1px 1px rgb(0, 0, 0), -1px -1px 0 rgb(0, 0, 0),
+    1px -1px 0 rgb(0, 0, 0), -1px 1px 0 rgb(0, 0, 0);
+
+  font-size: 25px;
+}
+
+.buttonHere {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 60px;
+  margin-right: 20px;
+}
+
 ul {
   list-style-type: none;
   padding-left: 0;
@@ -147,6 +200,7 @@ button {
   height: 50px;
   border-radius: 19px;
   border: none;
+  margin: 0;
 }
 
 /* SHOPPING CART */
@@ -273,6 +327,13 @@ nav > ul {
   }
   #shopping-cart-btn {
     margin: 15px 0px;
+  }
+
+  .special {
+    text-align: center;
+  }
+  .textSpecial {
+    margin: 10px 0px;
   }
 }
 
