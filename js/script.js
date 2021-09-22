@@ -298,17 +298,17 @@ for (let elem of MENU) {
   //   document.getElementsByClassName("Drinks")[0].appendChild(dish);
 }
 
-const select = document.querySelector(".select");
-const articleImages = document.querySelectorAll("article");
-function displayImages() {
-  if (select.innerHTML === "All") {
-    for (const iterator of articleImages) {
-      iterator.style.display = "block";
-    }
-  }
-}
+// const select = document.querySelector(".select");
+// const articleImages = document.querySelectorAll("article");
+// function displayImages() {
+//   if (select.innerHTML === "All") {
+//     for (const iterator of articleImages) {
+//       iterator.style.display = "block";
+//     }
+//   }
+// }
 
-select.addEventListener("click", displayImages);
+// select.addEventListener("click", displayImages);
 
 // ------------------------ SHOPPING CART (victor) --------------------------------------
 // Selection elements a pointer dans js
