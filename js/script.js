@@ -208,6 +208,9 @@ for (let elem of MENU) {
 
   const buy = document.createElement("button");
   buy.classList.add("cartBtn"); // VICTOR ADD THIS CLASS [cartBtn] FOR THE SHOPPING CART
+  buy.addEventListener("click", () => {
+    cartFunction(elem);
+  });
   buy.innerHTML = "Add to cart";
   dish.appendChild(buy);
 
@@ -249,6 +252,7 @@ for (elem of filter) {
   itemBtn.addEventListener("click", displayFiltered);
 }
 
+<<<<<<< HEAD
 //------------------------------ LEFT-SIDE NAV ----------------------------------
 
 // /* //console.log(MENU);
@@ -310,6 +314,8 @@ for (elem of filter) {
 
 // // select.addEventListener("click", displayImages);
 
+=======
+>>>>>>> 49e584a1154d9eb1c852bc93ad79d504dfa71847
 // ------------------------ SHOPPING CART (victor) --------------------------------------
 let arrayRespons = [];
 
@@ -331,8 +337,12 @@ function disparuFunction() {
 }
 // Creation FUNCTION [cartFunction]
 function cartFunction(leMenu) {
+<<<<<<< HEAD
+=======
+console.log(leMenu);
+>>>>>>> 49e584a1154d9eb1c852bc93ad79d504dfa71847
   arrayRespons.push(leMenu);
-
+console.log(leMenu);
   // Creation article + Add class
   const newArticleCart = document.createElement("article");
   newArticleCart.classList.add("article-test");
@@ -391,12 +401,7 @@ function cartFunction(leMenu) {
 }
 
 // -- CREATION EVENTLISTENER --
-// LOOP creation [eventListener] on each [cartBtn]  ===>>>  Function for call cartFunction
-for (let i = 0; i < cartBtns.length; i++) {
-  cartBtns[i].addEventListener("click", () => {
-    cartFunction(MENU[i]);
-  });
-}
+
 // LOOP creation [eventListener] on each [clearAll] button  ===>>>  Function for clear shopping list + call disparuFunction + display an alert
 for (let boutton of clearAll) {
   boutton.addEventListener("click", (i) => {
