@@ -33,9 +33,14 @@ header img {
 }
 
 article img {
+  width: 100%;
+  transition: all 0.2s ease-in-out;
   object-fit: cover;
   width: 400px;
   height: 300px;
+}
+article img:hover {
+  transform: scale(1.05);
 }
 
 figure {
