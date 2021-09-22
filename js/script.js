@@ -156,14 +156,14 @@ menuArticles.classList.add("menuArticle");
 for (elem of courses) {
   const item = document.createElement("li");
   const itemBtn = document.createElement("a");
-  const imageCourses = document.createElement("img");
-  itemBtn.setAttribute("href", "#");
+  const image = document.createElement("img");
+  itemBtn.setAttribute("href", "javascript:void()");
   itemBtn.classList.add(elem);
   itemBtn.classList.add("inactive");
   itemBtn.addEventListener("click", displaySection);
   const name = document.createTextNode(elem);
-  imageCourses.setAttribute("src", "./Images/" + elem + ".png");
-  itemBtn.appendChild(imageCourses);
+  image.setAttribute("src", "./Images/" + elem + ".png");
+  itemBtn.appendChild(image);
   itemBtn.appendChild(name);
   item.appendChild(itemBtn);
   courseList.appendChild(item);
@@ -234,7 +234,7 @@ for (elem of filter) {
   const item = document.createElement("li");
   const itemBtn = document.createElement("a");
   const image = document.createElement("img");
-  itemBtn.setAttribute("href", "#");
+  itemBtn.setAttribute("href", "javascript:void()");
   const name = document.createTextNode(elem);
   if (elem === "Comfort Food") {
     elem = "Comfort";
