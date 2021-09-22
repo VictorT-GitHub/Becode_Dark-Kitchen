@@ -58,7 +58,7 @@ function activate(e) {
   if (e.target.classList.contains("inactive")) {
     e.target.classList.remove("inactive");
     e.target.classList.add("active");
-    e.target.style.background = "green";
+    e.target.style.background = "hsl(229, 100%, 76%)";
     e.target.style.color = "white";
   } else {
     e.target.classList.remove("active");
@@ -84,7 +84,7 @@ function activate2(e) {
   if (e.target.classList.contains("inactive")) {
     e.target.classList.remove("inactive");
     e.target.classList.add("active");
-    e.target.style.background = "green";
+    e.target.style.background = "hsl(229, 100%, 76%)";
     e.target.style.color = "white";
   } else {
     e.target.classList.remove("active");
@@ -156,11 +156,14 @@ menuArticles.classList.add("menuArticle");
 for (elem of courses) {
   const item = document.createElement("li");
   const itemBtn = document.createElement("a");
+  const imageCourses = document.createElement("img");
   itemBtn.setAttribute("href", "#");
   itemBtn.classList.add(elem);
   itemBtn.classList.add("inactive");
   itemBtn.addEventListener("click", displaySection);
   const name = document.createTextNode(elem);
+  imageCourses.setAttribute("src", "./Images/" + elem + ".png");
+  itemBtn.appendChild(imageCourses);
   itemBtn.appendChild(name);
   item.appendChild(itemBtn);
   courseList.appendChild(item);
@@ -295,17 +298,17 @@ for (let elem of MENU) {
   //   document.getElementsByClassName("Drinks")[0].appendChild(dish);
 }
 
-const select = document.querySelector(".select");
-const articleImages = document.querySelectorAll("article");
-function displayImages() {
-  if (select.innerHTML === "All") {
-    for (const iterator of articleImages) {
-      iterator.style.display = "block";
-    }
-  }
-}
+// const select = document.querySelector(".select");
+// const articleImages = document.querySelectorAll("article");
+// function displayImages() {
+//   if (select.innerHTML === "All") {
+//     for (const iterator of articleImages) {
+//       iterator.style.display = "block";
+//     }
+//   }
+// }
 
-select.addEventListener("click", displayImages);
+// select.addEventListener("click", displayImages);
 
 // ------------------------ SHOPPING CART (victor) --------------------------------------
 let arrayRespons = [];
@@ -324,9 +327,9 @@ totalDiv.innerHTML = `Your total: ${total}€`;
 // -- CREATION FUNCTIONS --
 // Creation FUNCTION [disparuFunction] for display the shopping-cart
 function disparuFunction() {
-  achatsContainer.parentNode.classList.toggle('disparu');
-  }
-// Creation FUNCTION [cartFunction] for create elements in the shopping-cart
+  achatsContainer.parentNode.classList.toggle("disparu");
+}
+// Creation FUNCTION [cartFunction]
 function cartFunction(leMenu) {
 
   arrayRespons.push(leMenu);
@@ -346,7 +349,7 @@ function cartFunction(leMenu) {
   const newImageCart = document.createElement("img");
   newImageCart.setAttribute("src", leMenu.image);
   newImageCart.classList.add("article-cart");
-  
+
   // Creation titre pour article
   const newTitleCart = document.createElement("h6");
   newTitleCart.innerHTML = leMenu.name;
@@ -368,7 +371,7 @@ function cartFunction(leMenu) {
     total -= leMenu.price;
     totalDiv.innerHTML = `Your total: ${total}€`;
   });
-  
+
   // Deplacement img + titre + prix + removeBtn dans la DIV correspondante
   newDivImg.appendChild(newImageCart);
   newDivInfos.appendChild(newTitleCart);
@@ -393,27 +396,33 @@ function cartFunction(leMenu) {
 for (let i = 0; i < cartBtns.length; i++) {
   cartBtns[i].addEventListener("click", () => {
     cartFunction(MENU[i]);
-  })
+  });
 }
 // LOOP creation [eventListener] on each [clearAll] button  ===>>>  Function for clear shopping list + call disparuFunction + display an alert
 for (let boutton of clearAll) {
-  boutton.addEventListener('click', (i) => {
+  boutton.addEventListener("click", (i) => {
     disparuFunction();
 
     if (i.target.innerHTML == "acheter" && achatsContainer.hasChildNodes()) {
-      alert("Commande enregistrée, vous allez être redirigé vers la page de votre banque pour effectuer le paiement.")
-    } else if (i.target.innerHTML == "clear cart" && achatsContainer.hasChildNodes()) {
-      alert("Panier supprimé !")}
-    
+      alert(
+        "Commande enregistrée, vous allez être redirigé vers la page de votre banque pour effectuer le paiement."
+      );
+    } else if (
+      i.target.innerHTML == "clear cart" &&
+      achatsContainer.hasChildNodes()
+    ) {
+      alert("Panier supprimé !");
+    }
+
     let articleTest = document.querySelectorAll(".article-test"); // ? QUESTION POUR LE COACH
     for (let i = 0; i < articleTest.length; i++) {
       articleTest[i].remove();
       total = 0;
       totalDiv.innerHTML = `Your total: ${total}€`;
     }
-  })
+  });
 }
 // Creation [eventListener] on #shopping-cart-btn  ===>>>  Function for call disparuFunction
-shoppingCartBtn.addEventListener('click', () => {
+shoppingCartBtn.addEventListener("click", () => {
   disparuFunction();
-})
+});

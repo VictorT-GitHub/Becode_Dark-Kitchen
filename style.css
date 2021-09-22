@@ -9,10 +9,6 @@ body {
   font-family: "Red hat display";
 }
 
-main {
-  background: rgba(104, 104, 104, 0.815);
-}
-
 aside {
   width: 100vw;
   position: absolute;
@@ -20,7 +16,6 @@ aside {
   margin: 14px 14px 14px 0px;
   padding-left: 15px;
   top: auto;
-  left: 10px;
 }
 
 header {
@@ -48,6 +43,7 @@ figure {
 }
 figcaption {
   margin: 10px;
+  font-weight: 900;
 }
 
 article {
@@ -56,10 +52,10 @@ article {
   align-items: center;
   text-align: center;
   margin: 40px 10px;
-  background-color: aliceblue;
+  background-color: hsl(225, 100%, 94%);
 }
 article p {
-  margin: 10px -10px;
+  margin: 20px -10px;
 }
 
 .cartBtn {
@@ -76,13 +72,16 @@ article p {
   border-radius: 0.875rem;
   border: none;
   cursor: pointer;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  margin-top: 1rem;
   box-shadow: 5px 5px 15px 5px hsl(249deg 100% 50% / 25%);
 }
 
 h3 {
+  font-size: 30px;
   margin-bottom: 10px;
   text-align: left;
+  font-weight: 900;
 }
 
 ul {
@@ -102,7 +101,7 @@ li a {
   color: #000;
 }
 li a:hover {
-  background-color: rgba(0, 255, 0, 0.712);
+  background-color: hsl(261, 100%, 58%);
   color: white;
 }
 
@@ -113,6 +112,7 @@ li a:hover {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+  background-color: hsl(225, 100%, 98%);
 }
 
 .selectMenu {
@@ -137,6 +137,16 @@ li a:hover {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+
+button {
+  font-family: "Red hat display";
+  text-decoration: none;
+  cursor: pointer;
+  width: 70px;
+  height: 50px;
+  border-radius: 19px;
+  border: none;
 }
 
 /* SHOPPING CART */
@@ -228,6 +238,9 @@ nav > ul {
 }
 
 @media screen and (max-width: 768px) {
+  body {
+    width: 103vw;
+  }
   header {
     height: 400px;
   }
@@ -248,11 +261,18 @@ nav > ul {
     padding: 0;
     margin: auto;
   }
-}
+  article img {
+    width: 100%;
+  }
 
-@media screen and (min-width: 768px) and (max-width: 1440px) {
-  .mainMenu {
-    width: 1000px;
+  .AllSection,
+  .PizzaSection,
+  .PastaSection,
+  .DessertsSection {
+    width: 100%;
+  }
+  #shopping-cart-btn {
+    margin: 15px 0px;
   }
 }
 
