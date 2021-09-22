@@ -58,7 +58,7 @@ function activate(e) {
   if (e.target.classList.contains("inactive")) {
     e.target.classList.remove("inactive");
     e.target.classList.add("active");
-    e.target.style.background = "green";
+    e.target.style.background = "hsl(229, 100%, 76%)";
     e.target.style.color = "white";
   } else {
     e.target.classList.remove("active");
@@ -84,7 +84,7 @@ function activate2(e) {
   if (e.target.classList.contains("inactive")) {
     e.target.classList.remove("inactive");
     e.target.classList.add("active");
-    e.target.style.background = "green";
+    e.target.style.background = "hsl(229, 100%, 76%)";
     e.target.style.color = "white";
   } else {
     e.target.classList.remove("active");
@@ -156,11 +156,14 @@ menuArticles.classList.add("menuArticle");
 for (elem of courses) {
   const item = document.createElement("li");
   const itemBtn = document.createElement("a");
+  const imageCourses = document.createElement("img");
   itemBtn.setAttribute("href", "#");
   itemBtn.classList.add(elem);
   itemBtn.classList.add("inactive");
   itemBtn.addEventListener("click", displaySection);
   const name = document.createTextNode(elem);
+  imageCourses.setAttribute("src", "./Images/" + elem + ".png");
+  itemBtn.appendChild(imageCourses);
   itemBtn.appendChild(name);
   item.appendChild(itemBtn);
   courseList.appendChild(item);
