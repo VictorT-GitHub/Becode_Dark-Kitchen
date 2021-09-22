@@ -52,7 +52,7 @@ article {
   align-items: center;
   text-align: center;
   margin: 40px 10px;
-  background-color: hsl(225, 100%, 94%);
+  border: 1px solid rgb(173, 173, 173);
 }
 article p {
   margin: 20px -10px;
@@ -86,6 +86,7 @@ h3 {
 
 .special {
   margin: 50px;
+  margin-top: 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -165,6 +166,7 @@ li a:hover {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+
   background-color: hsl(225, 100%, 98%);
 }
 
@@ -227,9 +229,8 @@ button {
   margin-right: 20px;
 }
 #shopping-cart-section {
-  padding: 5px 0px;
-  width: 240px;
   background: rgba(0, 0, 0, 0.1);
+  width: 350px;
 }
 #shopping-cart-section.disparu {
   overflow: hidden;
@@ -242,22 +243,28 @@ button {
 #total-price,
 #cart-list-btns {
   padding: 5px 0px;
+  margin: 10px 17px;
 }
-.article-cart {
-  margin: 0;
-  padding: 0;
-}
+
 article.article-cart {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   flex-direction: row;
   padding: 5px 0px;
+  margin: 0;
+  padding: 0;
+  background: white;
 }
 img.article-cart {
   width: 80px;
   height: 80px;
   border-radius: 100%;
   margin-right: 10px;
+}
+
+#achats-container {
+  height: 240px;
+  overflow: auto;
 }
 /*  */
 
