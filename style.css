@@ -43,6 +43,7 @@ figure {
 }
 figcaption {
   margin: 10px;
+  font-weight: 900;
 }
 
 article {
@@ -54,7 +55,7 @@ article {
   background-color: hsl(225, 100%, 94%);
 }
 article p {
-  margin: 10px -10px;
+  margin: 20px -10px;
 }
 
 .cartBtn {
@@ -71,13 +72,16 @@ article p {
   border-radius: 0.875rem;
   border: none;
   cursor: pointer;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  margin-top: 1rem;
   box-shadow: 5px 5px 15px 5px hsl(249deg 100% 50% / 25%);
 }
 
 h3 {
+  font-size: 30px;
   margin-bottom: 10px;
   text-align: left;
+  font-weight: 900;
 }
 
 ul {
@@ -97,7 +101,7 @@ li a {
   color: #000;
 }
 li a:hover {
-  background-color: rgba(0, 255, 0, 0.712);
+  background-color: hsl(261, 100%, 58%);
   color: white;
 }
 
