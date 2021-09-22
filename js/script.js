@@ -308,27 +308,39 @@ function displayImages() {
 select.addEventListener("click", displayImages);
 
 // ------------------------ SHOPPING CART (victor) --------------------------------------
+let arrayRespons = [];
+
 // Selection elements a pointer dans js
 let cartBtns = document.querySelectorAll(".cartBtn"); // Select all buy buttons
 let achatsContainer = document.querySelector("#achats-container");
 let clearAll = document.querySelectorAll(".clearAll"); // Select all .clearAll buttons
 let shoppingCartBtn = document.querySelector("#shopping-cart-btn");
+let totalDiv = document.querySelector("#total-price");
+
+// -- €$TOTAL$€ --
+let total = 0;
+totalDiv.innerHTML = `Your total: ${total}€`;
 
 // -- CREATION FUNCTIONS --
 // Creation FUNCTION [disparuFunction] for display the shopping-cart
 function disparuFunction() {
   achatsContainer.parentNode.classList.toggle('disparu');
   }
-// Creation FUNCTION [cartFunction]
+// Creation FUNCTION [cartFunction] for create elements in the shopping-cart
 function cartFunction(leMenu) {
+
+  arrayRespons.push(leMenu);
+
   // Creation article + Add class
   const newArticleCart = document.createElement("article");
   newArticleCart.classList.add("article-test");
   newArticleCart.classList.add("article-cart");
   
-  // Creation 2 DIV pour flex img/infos
+  // Creation 4 DIV pour flex: nombreitem/img/infos/removeBtn
+  const newDivNombreItem = document.createElement("div");
   const newDivImg = document.createElement("div");
   const newDivInfos = document.createElement("div");
+  const newDivRemoveBtn = document.createElement("div");
 
   // Creation image pour article + Add src
   const newImageCart = document.createElement("img");
@@ -340,31 +352,40 @@ function cartFunction(leMenu) {
   newTitleCart.innerHTML = leMenu.name;
   newTitleCart.classList.add("article-cart");
   
-  // Creation prix pour article
+  // Creation prix pour article + Add the item PRICE to the TOTAL
   const newPrixCart = document.createElement("h6");
   newPrixCart.innerHTML = "€" + leMenu.price;
   newPrixCart.classList.add("article-cart");
-  
+  total += leMenu.price;
+  totalDiv.innerHTML = `Your total: ${total}€`;
+
   // Creation removeItem btn
   const removeItemBtn = document.createElement("button");
   removeItemBtn.innerText = "Remove";
   removeItemBtn.classList.add("article-cart");
   removeItemBtn.addEventListener("click", () => {
     newArticleCart.remove();
+    total -= leMenu.price;
+    totalDiv.innerHTML = `Your total: ${total}€`;
   });
   
   // Deplacement img + titre + prix + removeBtn dans la DIV correspondante
   newDivImg.appendChild(newImageCart);
   newDivInfos.appendChild(newTitleCart);
   newDivInfos.appendChild(newPrixCart);
-  newDivInfos.appendChild(removeItemBtn);
+  newDivRemoveBtn.appendChild(removeItemBtn);
   
-  // Deplacement des 2 DIV dans [newArticleCart]
+  // Deplacement des 4 DIV dans [newArticleCart]
+  newArticleCart.appendChild(newDivNombreItem);
   newArticleCart.appendChild(newDivImg);
   newArticleCart.appendChild(newDivInfos);
+  newArticleCart.appendChild(newDivRemoveBtn);
   
   // Deplacement de [newArticleCart] dans <div.achats-container>
   achatsContainer.appendChild(newArticleCart);
+
+  let nombreItem = 1;
+  newDivNombreItem.innerHTML = nombreItem;
 }
 
 // -- CREATION EVENTLISTENER --
@@ -385,8 +406,10 @@ for (let boutton of clearAll) {
       alert("Panier supprimé !")}
     
     let articleTest = document.querySelectorAll(".article-test"); // ? QUESTION POUR LE COACH
-    for (let elem of articleTest) {
-      elem.remove();
+    for (let i = 0; i < articleTest.length; i++) {
+      articleTest[i].remove();
+      total = 0;
+      totalDiv.innerHTML = `Your total: ${total}€`;
     }
   })
 }
