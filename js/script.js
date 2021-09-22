@@ -252,7 +252,6 @@ for (elem of filter) {
   itemBtn.addEventListener("click", displayFiltered);
 }
 
-<<<<<<< HEAD
 //------------------------------ LEFT-SIDE NAV ----------------------------------
 
 // /* //console.log(MENU);
@@ -314,8 +313,6 @@ for (elem of filter) {
 
 // // select.addEventListener("click", displayImages);
 
-=======
->>>>>>> 49e584a1154d9eb1c852bc93ad79d504dfa71847
 // ------------------------ SHOPPING CART (victor) --------------------------------------
 let arrayRespons = [];
 
@@ -337,12 +334,9 @@ function disparuFunction() {
 }
 // Creation FUNCTION [cartFunction]
 function cartFunction(leMenu) {
-<<<<<<< HEAD
-=======
-console.log(leMenu);
->>>>>>> 49e584a1154d9eb1c852bc93ad79d504dfa71847
+  console.log(leMenu);
   arrayRespons.push(leMenu);
-console.log(leMenu);
+  console.log(leMenu);
   // Creation article + Add class
   const newArticleCart = document.createElement("article");
   newArticleCart.classList.add("article-test");
