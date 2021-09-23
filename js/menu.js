@@ -21,7 +21,7 @@ const MENU = [
     type: "Pizza",
     name: "Pizza Napoletana",
     categories: ["Vegetarian"],
-    ingredients: ["mozzarella", "tomato", "oregano", "anchovies"],
+    ingredients: ["mozzarella", "tomato", "oregano"],
     price: 8,
     image: "Images/napoletana.jpeg",
     quantity : 1,
