@@ -1,4 +1,5 @@
 // ------------------------ DARK/LIGHT THEME BTN (victor)-------------------------------
+let logo = document.querySelector('#logo');
 
 // Creation [themeBtn] Light/Dark Theme
 const themeBtn = document.createElement("button");
@@ -16,15 +17,21 @@ themeBtn.addEventListener("click", () => {
   for (let btn of allBtn) {
     btn.classList.toggle("darkTheme");
   }
+  const allBtnLi = document.querySelectorAll("a");
+  for (let btnLi of allBtnLi) {
+    btnLi.classList.toggle("darkTheme");
+  }
 
-  document.body.classList.toggle("darkTheme");
-
-  // condition pour changer text "go dark" -> "go light"
+  // condition pour changer text "go dark" -> "go light" + LOGO
   if (!themeBtn.classList.contains("darkTheme")) {
     themeBtn.innerHTML = "Go Light";
+    logo.setAttribute('src', './Images/logofondnoir-removebg-preview.png');
   } else if (themeBtn.classList.contains("darkTheme")) {
     themeBtn.innerHTML = "Go Dark";
+    logo.setAttribute('src', './Images/logo.png');
   }
+
+  document.body.classList.toggle("darkTheme");
 });
 
 // Deplacement [themeBtn] in <aside>
@@ -46,7 +53,7 @@ function noResults(){
     }
   }
 
-  const articles = document.querySelectorAll("article");
+  const articles = document.querySelectorAll(".food");
   let yes = 0;
   for (let article of articles){
     if (article.style.display !== "none"){
@@ -65,7 +72,7 @@ function noResults(){
 
 function prevSiblings(target) {
   var siblings = [],
-    n = target;
+   n = target;
   while ((n = n.previousElementSibling)) siblings.push(n);
   return siblings;
 }
@@ -271,7 +278,7 @@ menuSelect.appendChild(courseList);
 const menuArticles = document.createElement("section");
 menuArticles.classList.add("menuArticle");
 
-for (elem of courses) {
+for (let elem of courses) {
   const item = document.createElement("li");
   const itemBtn = document.createElement("a");
   const image = document.createElement("img");
@@ -452,6 +459,9 @@ function cartFunction(leMenu) {
     const removeItemBtn = document.createElement("button");
     removeItemBtn.innerText = "Remove";
     removeItemBtn.classList.add("article-cart");
+    if (document.body.classList.contains('darkTheme')) {
+      removeItemBtn.classList.add('darkTheme')
+    }
     removeItemBtn.addEventListener("click", () => {
 
       newArticleCart.remove();
