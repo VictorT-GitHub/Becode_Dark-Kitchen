@@ -34,6 +34,33 @@ vraiAside.insertBefore(themeBtn, shoppingcartBtn);
 
 // ------------------------ FUNCTIONS --------------------------------------------
 
+//--------------------- NO RESULTS/NO ARTICLES DISPLAYED -------------------
+
+function noResults(){
+  const oldP = document.querySelectorAll("p");
+  const para = "No results found";
+  
+  for (let info of oldP){
+    if (info.innerHTML === para){
+      info.parentNode.removeChild(info);
+    }
+  }
+
+  const articles = document.querySelectorAll("article");
+  let yes = 0;
+  for (let article of articles){
+    if (article.style.display !== "none"){
+      yes++;
+    }
+  }
+  if (yes === 0){
+    const p = document.createElement("p");
+    p.classList.add("noResults");
+    p.innerHTML = "No results found";
+    document.querySelector(".menuArticle").append(p);
+  }
+}
+
 //------------------------- GET SIBLINGS -----------------------------
 
 function prevSiblings(target) {
@@ -130,8 +157,10 @@ function activate2(e) {
     }
     i++;
   }
-  console.log(cloneArray);
-  for (let elem of cloneArray) {
+
+  for (let elem of cloneArray){
+
+
     articles = document.querySelectorAll(".food");
     for (let article of articles) {
       if (
@@ -189,6 +218,8 @@ function displaySection(e) {
       }
     }
   }
+
+  noResults();
 }
 
 //------- DISPLAY WITH FILTERS (VEGGIE, SPICY, COMFORT FOOD) -----------
@@ -225,6 +256,8 @@ function displayFiltered(e) {
       }
     }
   }
+
+  noResults();
 }
 
 // ------------------------ CREATING SECTIONS AND ARTICLES WITH DISHES -----------------------------
