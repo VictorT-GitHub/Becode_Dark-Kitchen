@@ -63,6 +63,10 @@ article p {
   margin: 20px -10px;
 }
 
+.noResults {
+  text-align: center;
+}
+
 .cartBtn {
   font-family: "Red hat display";
   padding: 15px 32px;
