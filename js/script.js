@@ -367,10 +367,15 @@ function disparuFunction() {
   achatsContainer.parentNode.classList.toggle("disparu");
 }
 
+
+=======
+// Creation FUNCTION [cartFunction]
+
 function cartFunction(leMenu) {
   const newDivQuantity = document.createElement("div");
   // COMPTAGE DES ITEM EN DOUBLE, TRIPLE, ETC DANS LE PANIER (part1)
   const fnTrouverPizza = (element) => element.name === leMenu.name;
+
   const elemePizza = arrayRespons.find(fnTrouverPizza)
   if(elemePizza !== undefined){
   elemePizza.quantity++;
@@ -379,6 +384,7 @@ function cartFunction(leMenu) {
 }
   // Copie de element clické dans arrayRespons
   arrayRespons.push(leMenu);
+
 
   // Creation article + Add class
   const newArticleCart = document.createElement("article");
@@ -432,9 +438,7 @@ function cartFunction(leMenu) {
   // Deplacement de [newArticleCart] dans <div.achats-container>
   achatsContainer.appendChild(newArticleCart);
 
-
-newDivQuantity.innerHTML = elemePizza.quantity;
-
+  newDivQuantity.innerHTML = elemePizza.quantity;
 }
 
 // -- CREATION EVENTLISTENER --
