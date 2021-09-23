@@ -68,8 +68,8 @@ function activate(e) {
   }
 
   let siblings = getSiblings(e.target.parentNode);
-  console.log(e.target.parentNode);
-  console.log(siblings);
+  // console.log(e.target.parentNode);
+  // console.log(siblings);
   for (let sibling of siblings) {
     if (sibling.firstChild.classList.contains("active")) {
       sibling.firstChild.classList.remove("active");
@@ -113,7 +113,7 @@ function displaySection(e) {
 
 function displayFiltered(e) {
   activate2(e);
-  console.log(e.target.classList);
+  // console.log(e.target.classList);
   let filter = e.target.classList[0];
   const articles = document.querySelectorAll(".food");
   if (e.target.classList[1] === "active") {
@@ -334,110 +334,121 @@ function disparuFunction() {
 }
 // Creation FUNCTION [cartFunction]
 function cartFunction(leMenu) {
-<<<<<<< HEAD
-
-  const newDivQuantity = document.createElement("div");
-  // COMPTAGE DES ITEM EN DOUBLE, TRIPLE, ETC DANS LE PANIER (part1)
+  
+  // QUANTITY OF ITEM IN THE SHOPPING CART (part1)
   const fnTrouverPizza = (element) => element.name === leMenu.name;
   const elemePizza = arrayRespons.find(fnTrouverPizza)
-  if(elemePizza !== undefined){
-  elemePizza.quantity++;
-  newDivQuantity.innerHTML = elemePizza.quantity;
   
-}
+  if(elemePizza !== undefined){
+    
+    // Modification TOTAL PRICE before modify quantity
+    // total = total - (leMenu.price * arrayRespons[indexToModifyQuantity].quantity);
+    
+    // Modification QUANTITY
+    let indexToModifyQuantity = arrayRespons.indexOf(elemePizza);
+    let divQuantity = achatsContainer.children[indexToModifyQuantity];
+    
+    arrayRespons[indexToModifyQuantity].quantity++;
+    divQuantity.children[0].innerHTML = arrayRespons[indexToModifyQuantity].quantity;
 
-  // Copie de element clické dans arrayRespons
-  arrayRespons.push(leMenu);
-
-=======
-  console.log(leMenu);
-  arrayRespons.push(leMenu);
-  console.log(leMenu);
->>>>>>> 44d906d8fa3df5a700eb4ce4bce38894ddb35f43
-  // Creation article + Add class
-  const newArticleCart = document.createElement("article");
-  newArticleCart.classList.add("article-test");
-  newArticleCart.classList.add("article-cart");
-
-  // Creation 4 DIV pour flex: nombreitem/img/infos/removeBtn
-  const newDivImg = document.createElement("div");
-  const newDivInfos = document.createElement("div");
-  const newDivRemoveBtn = document.createElement("div");
-
-  // Creation image pour article + Add src
-  const newImageCart = document.createElement("img");
-  newImageCart.setAttribute("src", leMenu.image);
-  newImageCart.classList.add("article-cart");
-
-  // Creation titre pour article
-  const newTitleCart = document.createElement("h6");
-  newTitleCart.innerHTML = leMenu.name;
-  newTitleCart.classList.add("article-cart");
-
-  // Creation prix pour article + Add the item PRICE to the TOTAL
-  const newPrixCart = document.createElement("h6");
-  newPrixCart.innerHTML = "€" + leMenu.price;
-  newPrixCart.classList.add("article-cart");
-  total += leMenu.price;
-  totalDiv.innerHTML = `Your total: ${total}€`;
-
-  // Creation removeItem btn
-  const removeItemBtn = document.createElement("button");
-  removeItemBtn.innerText = "Remove";
-  removeItemBtn.classList.add("article-cart");
-  removeItemBtn.addEventListener("click", () => {
-    newArticleCart.remove();
-    total -= leMenu.price;
+    // Modification TOTAL PRICE after modify quantity 
+    // total = total + (leMenu.price * arrayRespons[indexToModifyQuantity].quantity);
+    total += leMenu.price;
     totalDiv.innerHTML = `Your total: ${total}€`;
-  });
 
-  // Deplacement img + titre + prix + removeBtn dans la DIV correspondante
-  newDivImg.appendChild(newImageCart);
-  newDivInfos.appendChild(newTitleCart);
-  newDivInfos.appendChild(newPrixCart);
-  newDivRemoveBtn.appendChild(removeItemBtn);
+  } else {
+    // Copie de element clické dans arrayRespons
+    arrayRespons.push(leMenu);
+    
+    // Creation article + Add class
+    const newArticleCart = document.createElement("article");
+    newArticleCart.classList.add("article-test");
+    newArticleCart.classList.add("article-cart");
+    
+    // Creation 4 DIV pour flex: nombreitem/img/infos/removeBtn
+    const newDivQuantity = document.createElement("div");
+      newDivQuantity.innerHTML = leMenu.quantity;
+    const newDivImg = document.createElement("div");
+    const newDivInfos = document.createElement("div");
+    const newDivRemoveBtn = document.createElement("div");
 
-  // Deplacement des 4 DIV dans [newArticleCart]
-  newArticleCart.appendChild(newDivQuantity);
-  newArticleCart.appendChild(newDivImg);
-  newArticleCart.appendChild(newDivInfos);
-  newArticleCart.appendChild(newDivRemoveBtn);
+    // Creation image pour article + Add src
+    const newImageCart = document.createElement("img");
+    newImageCart.setAttribute("src", leMenu.image);
+    newImageCart.classList.add("article-cart");
 
-  // Deplacement de [newArticleCart] dans <div.achats-container>
-  achatsContainer.appendChild(newArticleCart);
+    // Creation titre pour article
+    const newTitleCart = document.createElement("h6");
+    newTitleCart.innerHTML = leMenu.name;
+    newTitleCart.classList.add("article-cart");
 
+    // Creation prix pour article + Add the item PRICE to the TOTAL
+    const newPrixCart = document.createElement("h6");
+    newPrixCart.innerHTML = "€" + leMenu.price;
+    newPrixCart.classList.add("article-cart");
+    total += leMenu.price;
+    totalDiv.innerHTML = `Your total: ${total}€`;
 
-newDivQuantity.innerHTML = elemePizza.quantity;
+    // Creation removeItem btn
+    const removeItemBtn = document.createElement("button");
+    removeItemBtn.innerText = "Remove";
+    removeItemBtn.classList.add("article-cart");
+    removeItemBtn.addEventListener("click", () => {
 
+      newArticleCart.remove();
+
+      total = total - (leMenu.price * leMenu.quantity);
+      totalDiv.innerHTML = `Your total: ${total}€`;
+
+      leMenu.quantity = 1;
+      
+      arrayRespons.splice(arrayRespons.indexOf(leMenu), 1);
+    });
+
+    // Deplacement img + titre + prix + removeBtn dans la DIV correspondante
+    newDivImg.appendChild(newImageCart);
+    newDivInfos.appendChild(newTitleCart);
+    newDivInfos.appendChild(newPrixCart);
+    newDivRemoveBtn.appendChild(removeItemBtn);
+
+    // Deplacement des 4 DIV dans [newArticleCart]
+    newArticleCart.appendChild(newDivQuantity);
+    newArticleCart.appendChild(newDivImg);
+    newArticleCart.appendChild(newDivInfos);
+    newArticleCart.appendChild(newDivRemoveBtn);
+
+    // Deplacement de [newArticleCart] dans <div.achats-container>
+    achatsContainer.appendChild(newArticleCart);
+}
 }
 
 // -- CREATION EVENTLISTENER --
-
 // LOOP creation [eventListener] on each [clearAll] button  ===>>>  Function for clear shopping list + call disparuFunction + display an alert
 for (let boutton of clearAll) {
   boutton.addEventListener("click", (i) => {
+
     disparuFunction();
 
     if (i.target.innerHTML == "acheter" && achatsContainer.hasChildNodes()) {
       alert(
-        "Commande enregistrée, vous allez être redirigé vers la page de votre banque pour effectuer le paiement."
-      );
+        "Commande enregistrée, vous allez être redirigé vers la page de votre banque pour effectuer le paiement.");
     } else if (
-      i.target.innerHTML == "clear cart" &&
-      achatsContainer.hasChildNodes()
-    ) {
+      i.target.innerHTML == "clear cart" && achatsContainer.hasChildNodes()) {
       alert("Panier supprimé !");
     }
 
     let articleTest = document.querySelectorAll(".article-test"); // ? QUESTION POUR LE COACH
     for (let i = 0; i < articleTest.length; i++) {
+      arrayRespons[i].quantity = 1;
       articleTest[i].remove();
-      total = 0;
-      totalDiv.innerHTML = `Your total: ${total}€`;
     }
+
+    total = 0;
+    totalDiv.innerHTML = `Your total: ${total}€`;
+    
+    arrayRespons.splice(0);
+
   });
 }
 // Creation [eventListener] on #shopping-cart-btn  ===>>>  Function for call disparuFunction
-shoppingCartBtn.addEventListener("click", () => {
-  disparuFunction();
-});
+shoppingCartBtn.addEventListener("click", () => { disparuFunction(); });
