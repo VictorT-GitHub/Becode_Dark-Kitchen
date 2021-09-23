@@ -55,21 +55,31 @@ function getSiblings(target) {
 }
 
 function activate(e) {
+  let type = e.target.classList[0];
+
+  const selected = document.getElementsByClassName(type + "Section")[0];
   if (e.target.classList.contains("inactive")) {
     e.target.classList.remove("inactive");
     e.target.classList.add("active");
+    selected.classList.add("active");
     e.target.style.background = "hsl(229, 100%, 76%)";
     e.target.style.color = "white";
-  } else {
+  } else if (e.target.classList.contains("active")) {
     e.target.classList.remove("active");
     e.target.classList.add("inactive");
+    selected.classList.remove("active");
     e.target.style.background = "inherit";
     e.target.style.color = "inherit";
   }
 
+  let siblingsSelected = getSiblings(selected);
+  for (let siblingSel of siblingsSelected) {
+    if (siblingSel.classList.contains("active")) {
+      siblingSel.classList.remove("active");
+    }
+  }
+
   let siblings = getSiblings(e.target.parentNode);
-  console.log(e.target.parentNode);
-  console.log(siblings);
   for (let sibling of siblings) {
     if (sibling.firstChild.classList.contains("active")) {
       sibling.firstChild.classList.remove("active");
@@ -81,16 +91,28 @@ function activate(e) {
 }
 
 function activate2(e) {
+  let type = e.target.classList[0];
+
   if (e.target.classList.contains("inactive")) {
     e.target.classList.remove("inactive");
     e.target.classList.add("active");
     e.target.style.background = "hsl(229, 100%, 76%)";
     e.target.style.color = "white";
-  } else {
+  } else if (e.target.classList.contains("active")) {
     e.target.classList.remove("active");
     e.target.classList.add("inactive");
     e.target.style.background = "inherit";
     e.target.style.color = "inherit";
+  }
+
+  let siblings = getSiblings(e.target.parentNode);
+  for (let sibling of siblings) {
+    if (sibling.firstChild.classList.contains("active")) {
+      sibling.firstChild.classList.remove("active");
+      sibling.firstChild.classList.add("inactive");
+      sibling.firstChild.style.background = "inherit";
+      sibling.firstChild.style.color = "inherit";
+    }
   }
 }
 
@@ -103,8 +125,22 @@ function displaySection(e) {
     for (article of articles) {
       let parent = article.parentNode;
       if (parent.classList.contains(type + "Section")) {
-        article.style.display = "flex";
+        const filters = document.querySelectorAll("li a");
+        if (filters[4].classList.contains("inactive") && filters[5].classList.contains("inactive") && filters[6].classList.contains("inactive")){
+          article.style.display = "flex";
+        } else if (article.classList.contains("active")){
+          article.style.display = "flex";
+        } else {
+          article.style.display = "none";
+        }
       } else {
+        article.style.display = "none";
+      }
+    }
+  } else {
+    for (article of articles) {
+      let parent = article.parentNode;
+      if (parent.classList.contains(type + "Section")) {
         article.style.display = "none";
       }
     }
@@ -113,31 +149,28 @@ function displaySection(e) {
 
 function displayFiltered(e) {
   activate2(e);
-  console.log(e.target.classList);
+
   let filter = e.target.classList[0];
   const articles = document.querySelectorAll(".food");
   if (e.target.classList[1] === "active") {
     for (article of articles) {
-      if (article.classList.contains(filter)) {
-        article.classList.add("active");
+      let parent = article.parentNode;
+      if (parent.classList.contains("active") && article.classList.contains(filter)) {
         article.style.display = "flex";
       } else {
         article.style.display = "none";
       }
-    }
+    } 
   } else {
-    for (article of articles) {
-      let parent = article.parentNode;
-      if (article.classList.contains(filter)) {
-        article.classList.remove("active");
+    const filters = document.querySelectorAll("li a");
+    if (filters[4].classList.contains("inactive") && filters[5].classList.contains("inactive") && filters[6].classList.contains("inactive")){
+      for (article of articles){
+        let parent = article.parentNode;
+        if (parent.classList.contains("active")){
+          article.style.display = "flex";
+        }
       }
-      if (
-        article.classList.contains(filter) &&
-        parent.classList.contains("inactive")
-      ) {
-        article.style.display = "none";
-      }
-    }
+    }  
   }
 }
 
@@ -161,6 +194,7 @@ for (elem of courses) {
   itemBtn.classList.add(elem);
   itemBtn.classList.add("inactive");
   itemBtn.addEventListener("click", displaySection);
+  itemBtn.setAttribute("href", "javascript:void(0);");
   const name = document.createTextNode(elem);
   image.setAttribute("src", "./Images/" + elem + ".png");
   itemBtn.appendChild(image);
@@ -237,7 +271,6 @@ for (elem of filter) {
   const item = document.createElement("li");
   const itemBtn = document.createElement("a");
   const image = document.createElement("img");
-  itemBtn.setAttribute("href", "javascript:void()");
   const name = document.createTextNode(elem);
   if (elem === "Comfort Food") {
     elem = "Comfort";
@@ -249,6 +282,7 @@ for (elem of filter) {
   itemBtn.appendChild(name);
   item.appendChild(itemBtn);
   filterList.appendChild(item);
+  itemBtn.setAttribute("href", "javascript:void(0);");
   itemBtn.addEventListener("click", displayFiltered);
 }
 
@@ -332,23 +366,26 @@ totalDiv.innerHTML = `Your total: ${total}€`;
 function disparuFunction() {
   achatsContainer.parentNode.classList.toggle("disparu");
 }
+
+
+=======
 // Creation FUNCTION [cartFunction]
+
 function cartFunction(leMenu) {
   const newDivQuantity = document.createElement("div");
   // COMPTAGE DES ITEM EN DOUBLE, TRIPLE, ETC DANS LE PANIER (part1)
   const fnTrouverPizza = (element) => element.name === leMenu.name;
-  const elemePizza = arrayRespons.find(fnTrouverPizza);
-  if (elemePizza !== undefined) {
-    elemePizza.quantity++;
-    newDivQuantity.innerHTML = elemePizza.quantity;
-  }
 
+  const elemePizza = arrayRespons.find(fnTrouverPizza)
+  if(elemePizza !== undefined){
+  elemePizza.quantity++;
+  newDivQuantity.innerHTML = elemePizza.quantity;
+  
+}
   // Copie de element clické dans arrayRespons
   arrayRespons.push(leMenu);
 
-  console.log(leMenu);
-  arrayRespons.push(leMenu);
-  console.log(leMenu);
+
   // Creation article + Add class
   const newArticleCart = document.createElement("article");
   newArticleCart.classList.add("article-test");
