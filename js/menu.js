@@ -6,6 +6,7 @@ const MENU = [
     ingredients: ["mozzarella", "pecorino cheese", "spicy salami"],
     price: 9,
     image: "Images/sarda.jpeg",
+    quantity : 1,
   },
   {
     type: "Pizza",
@@ -14,6 +15,7 @@ const MENU = [
     ingredients: ["mozzarella", "anchovies", "capers", "oregano"],
     price: 9,
     image: "Images/Pizza-Romana-1-800x477.jpeg",
+    quantity : 1,
   },
   {
     type: "Pizza",
@@ -22,6 +24,7 @@ const MENU = [
     ingredients: ["mozzarella", "tomato", "oregano", "anchovies"],
     price: 8,
     image: "Images/napoletana.jpeg",
+    quantity : 1,
   },
   {
     type: "Pizza",
@@ -30,6 +33,7 @@ const MENU = [
     ingredients: ["artichokes", "tomatoes", "basil", "mushrooms", "ham"],
     price: 11,
     image: "Images/four-seasons-pizza.jpeg",
+    quantity : 1,
   },
   {
     type: "Pasta",
@@ -38,6 +42,7 @@ const MENU = [
     ingredients: ["egg", "lardons", "Pecorino romano"],
     price: 8,
     image: "Images/pasta-carbonara_b-864x413.jpeg",
+    quantity : 1,
   },
   {
     type: "Pasta",
@@ -46,6 +51,7 @@ const MENU = [
     ingredients: ["beef", "chopped tomatoes", "garlic"],
     price: 8,
     image: "Images/bolognaise.jpeg",
+    quantity : 1,
   },
   {
     type: "Pasta",
@@ -54,6 +60,7 @@ const MENU = [
     ingredients: ["mozzarella", "tomato", "beef"],
     price: 10,
     image: "Images/lasagna-bolognese.jpeg",
+    quantity : 1,
   },
   {
     type: "Pasta",
@@ -63,7 +70,8 @@ const MENU = [
     price: 9,
     image:
       "Images/Spaghetti-Cacio-e-Pepe-Pecorino-and-black-pepper-spaghetti_1200x800.jpeg",
-  },
+      quantity : 1,
+    },
 
   {
     type: "Desserts",
@@ -72,6 +80,7 @@ const MENU = [
     ingredients: ["honey", "egg whites", "nuts"],
     price: 4,
     image: "Images/Torrone Semifreddo.jpeg",
+    quantity : 1,
   },
   {
     type: "Desserts",
@@ -80,6 +89,7 @@ const MENU = [
     ingredients: ["nut milk", "honey", "strawberry jam"],
     price: 10,
     image: "Images/pannacotta.jpeg",
+    quantity : 1,
   },
   {
     type: "Desserts",
@@ -88,5 +98,6 @@ const MENU = [
     ingredients: ["dark chocolate", "egg", "nuts"],
     price: 9,
     image: "Images/biscotti.jpeg",
+    quantity : 1,
   },
 ];

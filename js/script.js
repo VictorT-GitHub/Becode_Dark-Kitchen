@@ -96,9 +96,9 @@ function activate2(e) {
 
 function displaySection(e) {
   activate(e);
-
+  
   let type = e.target.classList[0];
-  const articles = document.querySelectorAll("article");
+  const articles = document.querySelectorAll(".food");
   if (e.target.classList.contains("active")) {
     for (article of articles) {
       let parent = article.parentNode;
@@ -115,7 +115,7 @@ function displayFiltered(e) {
   activate2(e);
   console.log(e.target.classList);
   let filter = e.target.classList[0];
-  const articles = document.querySelectorAll("article");
+  const articles = document.querySelectorAll(".food");
   if (e.target.classList[1] === "active") {
     for (article of articles) {
       if (article.classList.contains(filter)) {
@@ -273,16 +273,26 @@ function disparuFunction() {
 }
 // Creation FUNCTION [cartFunction]
 function cartFunction(leMenu) {
-console.log(leMenu);
+
+  const newDivQuantity = document.createElement("div");
+  // COMPTAGE DES ITEM EN DOUBLE, TRIPLE, ETC DANS LE PANIER (part1)
+  const fnTrouverPizza = (element) => element.name === leMenu.name;
+  const elemePizza = arrayRespons.find(fnTrouverPizza)
+  if(elemePizza !== undefined){
+  elemePizza.quantity++;
+  newDivQuantity.innerHTML = elemePizza.quantity;
+  
+}
+
+  // Copie de element clické dans arrayRespons
   arrayRespons.push(leMenu);
-console.log(leMenu);
+
   // Creation article + Add class
   const newArticleCart = document.createElement("article");
   newArticleCart.classList.add("article-test");
   newArticleCart.classList.add("article-cart");
   
   // Creation 4 DIV pour flex: nombreitem/img/infos/removeBtn
-  const newDivNombreItem = document.createElement("div");
   const newDivImg = document.createElement("div");
   const newDivInfos = document.createElement("div");
   const newDivRemoveBtn = document.createElement("div");
@@ -321,7 +331,7 @@ console.log(leMenu);
   newDivRemoveBtn.appendChild(removeItemBtn);
   
   // Deplacement des 4 DIV dans [newArticleCart]
-  newArticleCart.appendChild(newDivNombreItem);
+  newArticleCart.appendChild(newDivQuantity);
   newArticleCart.appendChild(newDivImg);
   newArticleCart.appendChild(newDivInfos);
   newArticleCart.appendChild(newDivRemoveBtn);
@@ -329,8 +339,9 @@ console.log(leMenu);
   // Deplacement de [newArticleCart] dans <div.achats-container>
   achatsContainer.appendChild(newArticleCart);
 
-  let nombreItem = 1;
-  newDivNombreItem.innerHTML = nombreItem;
+
+newDivQuantity.innerHTML = elemePizza.quantity;
+
 }
 
 // -- CREATION EVENTLISTENER --
