@@ -367,8 +367,6 @@ function disparuFunction() {
   achatsContainer.parentNode.classList.toggle("disparu");
 }
 
-
-=======
 // Creation FUNCTION [cartFunction]
 
 function cartFunction(leMenu) {
