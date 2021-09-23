@@ -25,7 +25,7 @@ themeBtn.addEventListener("click", () => {
   // condition pour changer text "go dark" -> "go light" + LOGO
   if (!themeBtn.classList.contains("darkTheme")) {
     themeBtn.innerHTML = "Go Light";
-    logo.setAttribute('src', './Images/logofondnoir-removebg-preview.png');
+    logo.setAttribute('src', './Images/LogoNoir-removebg-preview.png');
   } else if (themeBtn.classList.contains("darkTheme")) {
     themeBtn.innerHTML = "Go Dark";
     logo.setAttribute('src', './Images/logo.png');
