@@ -32,7 +32,9 @@ const shoppingcartBtn = document.getElementById("shopping-cart-btn");
 const vraiAside = document.getElementById("vraiAside");
 vraiAside.insertBefore(themeBtn, shoppingcartBtn);
 
-// ------------------------ FUNCTIONS -----------------------------
+// ------------------------ FUNCTIONS --------------------------------------------
+
+//------------------------- GET SIBLINGS -----------------------------
 
 function prevSiblings(target) {
   var siblings = [],
@@ -54,22 +56,34 @@ function getSiblings(target) {
   return prev.concat(next);
 }
 
+//------------- ACTIVATE AND DEACTIVATE FILTER BUTTONS ------------------------
+
 function activate(e) {
+  let type = e.target.classList[0];
+  const selected = document.getElementsByClassName(type + "Section")[0];
+
   if (e.target.classList.contains("inactive")) {
     e.target.classList.remove("inactive");
     e.target.classList.add("active");
+    selected.classList.add("active");
     e.target.style.background = "hsl(229, 100%, 76%)";
     e.target.style.color = "white";
-  } else {
+  } else if (e.target.classList.contains("active")) {
     e.target.classList.remove("active");
     e.target.classList.add("inactive");
+    selected.classList.remove("active");
     e.target.style.background = "inherit";
     e.target.style.color = "inherit";
   }
 
+  let siblingsSelected = getSiblings(selected);
+  for (let siblingSel of siblingsSelected) {
+    if (siblingSel.classList.contains("active")) {
+      siblingSel.classList.remove("active");
+    }
+  }
+
   let siblings = getSiblings(e.target.parentNode);
-  // console.log(e.target.parentNode);
-  // console.log(siblings);
   for (let sibling of siblings) {
     if (sibling.firstChild.classList.contains("active")) {
       sibling.firstChild.classList.remove("active");
@@ -81,46 +95,88 @@ function activate(e) {
 }
 
 function activate2(e) {
+  let type = e.target.classList[0];
+  const selected = document.getElementsByClassName(type);
+
   if (e.target.classList.contains("inactive")) {
     e.target.classList.remove("inactive");
     e.target.classList.add("active");
     e.target.style.background = "hsl(229, 100%, 76%)";
     e.target.style.color = "white";
-  } else {
+    for (let select of selected) {
+      if (select.classList.contains("food")) {
+        select.classList.add("active");
+      }
+    }
+  } else if (e.target.classList.contains("active")) {
     e.target.classList.remove("active");
     e.target.classList.add("inactive");
     e.target.style.background = "inherit";
     e.target.style.color = "inherit";
-  }
-}
-
-function displaySection(e) {
-  activate(e);
-  
-  let type = e.target.classList[0];
-  const articles = document.querySelectorAll(".food");
-  if (e.target.classList.contains("active")) {
-    for (article of articles) {
-      let parent = article.parentNode;
-      if (parent.classList.contains(type + "Section")) {
-        article.style.display = "flex";
-      } else {
-        article.style.display = "none";
+    for (let select of selected) {
+      if (select.classList.contains("food")) {
+        select.classList.remove("active");
       }
+    }
+  }
+
+  let arr = ["Vegetarian", "Spicy", "Comfort"];
+  let cloneArray = arr.slice();
+
+  let i = 0;
+  while (i < cloneArray.length) {
+    if (cloneArray[i] === type) {
+      cloneArray.splice(i, 1);
+    }
+    i++;
+  }
+  console.log(cloneArray);
+  for (let elem of cloneArray) {
+    articles = document.querySelectorAll(".food");
+    for (let article of articles) {
+      if (
+        article.classList.contains(elem) &&
+        article.classList.contains("active")
+      ) {
+        article.classList.remove("active");
+      }
+    }
+  }
+
+  let siblings = getSiblings(e.target.parentNode);
+  for (let sibling of siblings) {
+    if (sibling.firstChild.classList.contains("active")) {
+      sibling.firstChild.classList.remove("active");
+      sibling.firstChild.classList.add("inactive");
+      sibling.firstChild.style.background = "inherit";
+      sibling.firstChild.style.color = "inherit";
     }
   }
 }
 
-function displayFiltered(e) {
-  activate2(e);
-  // console.log(e.target.classList);
-  let filter = e.target.classList[0];
+//------------- DISPLAY WITH MEAL SELECTION (ALL, PIZZA, PASTA, DESSERTS) -------------------------------
+
+function displaySection(e) {
+  activate(e);
+
+  let type = e.target.classList[0];
   const articles = document.querySelectorAll(".food");
-  if (e.target.classList[1] === "active") {
+  const filters = document.querySelectorAll("li a");
+  if (e.target.classList.contains("active")) {
     for (article of articles) {
-      if (article.classList.contains(filter)) {
-        article.classList.add("active");
-        article.style.display = "flex";
+      let parent = article.parentNode;
+      if (parent.classList.contains(type + "Section")) {
+        if (
+          filters[4].classList.contains("inactive") &&
+          filters[5].classList.contains("inactive") &&
+          filters[6].classList.contains("inactive")
+        ) {
+          article.style.display = "flex";
+        } else if (article.classList.contains("active")) {
+          article.style.display = "flex";
+        } else {
+          article.style.display = "none";
+        }
       } else {
         article.style.display = "none";
       }
@@ -128,20 +184,49 @@ function displayFiltered(e) {
   } else {
     for (article of articles) {
       let parent = article.parentNode;
-      if (article.classList.contains(filter)) {
-        article.classList.remove("active");
-      }
-      if (
-        article.classList.contains(filter) &&
-        parent.classList.contains("inactive")
-      ) {
+      if (parent.classList.contains(type + "Section")) {
         article.style.display = "none";
       }
     }
   }
 }
 
-// ------------------------ CREATING SECTIONS -----------------------------
+//------- DISPLAY WITH FILTERS (VEGGIE, SPICY, COMFORT FOOD) -----------
+
+function displayFiltered(e) {
+  activate2(e);
+  let filter = e.target.classList[0];
+  const articles = document.querySelectorAll(".food");
+  if (e.target.classList[1] === "active") {
+    for (article of articles) {
+      let parent = article.parentNode;
+      if (
+        parent.classList.contains("active") &&
+        article.classList.contains(filter)
+      ) {
+        article.style.display = "flex";
+      } else {
+        article.style.display = "none";
+      }
+    }
+  } else {
+    const filters = document.querySelectorAll("li a");
+    if (
+      filters[4].classList.contains("inactive") &&
+      filters[5].classList.contains("inactive") &&
+      filters[6].classList.contains("inactive")
+    ) {
+      for (article of articles) {
+        let parent = article.parentNode;
+        if (parent.classList.contains("active")) {
+          article.style.display = "flex";
+        }
+      }
+    }
+  }
+}
+
+// ------------------------ CREATING SECTIONS AND ARTICLES WITH DISHES -----------------------------
 
 const courses = ["All", "Pizza", "Pasta", "Desserts"];
 
@@ -161,6 +246,7 @@ for (elem of courses) {
   itemBtn.classList.add(elem);
   itemBtn.classList.add("inactive");
   itemBtn.addEventListener("click", displaySection);
+  itemBtn.setAttribute("href", "javascript:void(0);");
   const name = document.createTextNode(elem);
   image.setAttribute("src", "./Images/" + elem + ".png");
   itemBtn.appendChild(image);
@@ -225,7 +311,7 @@ for (let elem of MENU) {
   }
 }
 
-//-------------------------------- EXTRA FILTER BUTTONS --------------------------
+//-------------------------------- EXTRA FILTER BUTTONS (VEGGIE, SPICY, COMFORT FOOD) --------------------------
 
 const filter = ["Vegetarian", "Spicy", "Comfort Food"];
 
@@ -237,7 +323,6 @@ for (elem of filter) {
   const item = document.createElement("li");
   const itemBtn = document.createElement("a");
   const image = document.createElement("img");
-  itemBtn.setAttribute("href", "javascript:void()");
   const name = document.createTextNode(elem);
   if (elem === "Comfort Food") {
     elem = "Comfort";
@@ -249,69 +334,9 @@ for (elem of filter) {
   itemBtn.appendChild(name);
   item.appendChild(itemBtn);
   filterList.appendChild(item);
+  itemBtn.setAttribute("href", "javascript:void(0);");
   itemBtn.addEventListener("click", displayFiltered);
 }
-
-//------------------------------ LEFT-SIDE NAV ----------------------------------
-
-// /* //console.log(MENU);
-//     document.getElementsByClassName("Desserts")[0].appendChild(dish);
-//   } // else if (elem.type === "Drink") {
-//   //   document.getElementsByClassName("Drinks")[0].appendChild(dish);
-//   // }
-// }*/
-
-// for (let elem of MENU) {
-//   const dish = document.createElement("article");
-
-//   const figure = document.createElement("figure");
-//   const image = document.createElement("img");
-//   image.setAttribute("src", elem.image);
-//   const caption = document.createElement("figcaption");
-//   const name = document.createTextNode(elem.name);
-//   figure.appendChild(image);
-//   caption.appendChild(name);
-//   figure.appendChild(caption);
-//   dish.appendChild(figure);
-
-//   const info = document.createElement("p");
-//   info.innerHTML = "Ingredients: ";
-//   for (let i = 0; i < elem.ingredients.length - 1; i++) {
-//     info.innerHTML += elem.ingredients[i] + ", ";
-//   }
-//   info.innerHTML += elem.ingredients[elem.ingredients.length - 1];
-//   dish.appendChild(info);
-
-//   const price = document.createElement("p");
-//   price.innerHTML = "€" + elem.price;
-//   dish.appendChild(price);
-
-//   // const buy = document.createElement("button");
-//   // buy.classList.add("cartBtn"); // VICTOR ADD THIS CLASS [cartBtn] FOR THE SHOPPING CART
-//   // buy.innerHTML = "Add to cart";
-//   // dish.appendChild(buy);
-
-//   if (elem.type === "Pizza") {
-//     document.getElementsByClassName("Pizza")[0].appendChild(dish);
-//   } else if (elem.type === "Pasta") {
-//     document.getElementsByClassName("Pasta")[0].appendChild(dish);
-//   } else if (elem.type === "Desserts") {
-//     document.getElementsByClassName("Desserts")[0].appendChild(dish);
-//   } // else if (elem.type === "Drink") {
-//   //   document.getElementsByClassName("Drinks")[0].appendChild(dish);
-// }
-
-// // const select = document.querySelector(".select");
-// // const articleImages = document.querySelectorAll("article");
-// // function displayImages() {
-// //   if (select.innerHTML === "All") {
-// //     for (const iterator of articleImages) {
-// //       iterator.style.display = "block";
-// //     }
-// //   }
-// // }
-
-// // select.addEventListener("click", displayImages);
 
 // ------------------------ SHOPPING CART (victor) --------------------------------------
 let arrayRespons = [];
@@ -332,6 +357,7 @@ totalDiv.innerHTML = `Your total: ${total}€`;
 function disparuFunction() {
   achatsContainer.parentNode.classList.toggle("disparu");
 }
+
 // Creation FUNCTION [cartFunction]
 function cartFunction(leMenu) {
   

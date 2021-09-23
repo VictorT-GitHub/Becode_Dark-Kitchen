@@ -11,7 +11,7 @@ const MENU = [
   {
     type: "Pizza",
     name: "Pizza Romana",
-    categories: ["Vegetarian"],
+    categories: [],
     ingredients: ["mozzarella", "anchovies", "capers", "oregano"],
     price: 9,
     image: "Images/Pizza-Romana-1-800x477.jpeg",
@@ -21,7 +21,7 @@ const MENU = [
     type: "Pizza",
     name: "Pizza Napoletana",
     categories: ["Vegetarian"],
-    ingredients: ["mozzarella", "tomato", "oregano", "anchovies"],
+    ingredients: ["mozzarella", "tomato", "oregano"],
     price: 8,
     image: "Images/napoletana.jpeg",
     quantity : 1,
@@ -76,7 +76,7 @@ const MENU = [
   {
     type: "Desserts",
     name: "Torrone Semifreddo",
-    categories: ["Desserts"],
+    categories: ["Desserts", "Vegetarian"],
     ingredients: ["honey", "egg whites", "nuts"],
     price: 4,
     image: "Images/Torrone Semifreddo.jpeg",
@@ -85,7 +85,7 @@ const MENU = [
   {
     type: "Desserts",
     name: "Mixed-Nut-Milk Panna Cotta",
-    categories: ["Desserts"],
+    categories: ["Desserts", "Vegetarian"],
     ingredients: ["nut milk", "honey", "strawberry jam"],
     price: 10,
     image: "Images/pannacotta.jpeg",
@@ -94,7 +94,7 @@ const MENU = [
   {
     type: "Desserts",
     name: "Chocolate and Pistachio Biscotti",
-    categories: ["Desserts"],
+    categories: ["Desserts", "Vegetarian"],
     ingredients: ["dark chocolate", "egg", "nuts"],
     price: 9,
     image: "Images/biscotti.jpeg",
