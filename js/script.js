@@ -96,7 +96,7 @@ function activate2(e) {
 
 function displaySection(e) {
   activate(e);
-  
+
   let type = e.target.classList[0];
   const articles = document.querySelectorAll(".food");
   if (e.target.classList.contains("active")) {
@@ -334,26 +334,21 @@ function disparuFunction() {
 }
 // Creation FUNCTION [cartFunction]
 function cartFunction(leMenu) {
-<<<<<<< HEAD
-
   const newDivQuantity = document.createElement("div");
   // COMPTAGE DES ITEM EN DOUBLE, TRIPLE, ETC DANS LE PANIER (part1)
   const fnTrouverPizza = (element) => element.name === leMenu.name;
-  const elemePizza = arrayRespons.find(fnTrouverPizza)
-  if(elemePizza !== undefined){
-  elemePizza.quantity++;
-  newDivQuantity.innerHTML = elemePizza.quantity;
-  
-}
+  const elemePizza = arrayRespons.find(fnTrouverPizza);
+  if (elemePizza !== undefined) {
+    elemePizza.quantity++;
+    newDivQuantity.innerHTML = elemePizza.quantity;
+  }
 
   // Copie de element clické dans arrayRespons
   arrayRespons.push(leMenu);
 
-=======
   console.log(leMenu);
   arrayRespons.push(leMenu);
   console.log(leMenu);
->>>>>>> 44d906d8fa3df5a700eb4ce4bce38894ddb35f43
   // Creation article + Add class
   const newArticleCart = document.createElement("article");
   newArticleCart.classList.add("article-test");
@@ -406,9 +401,7 @@ function cartFunction(leMenu) {
   // Deplacement de [newArticleCart] dans <div.achats-container>
   achatsContainer.appendChild(newArticleCart);
 
-
-newDivQuantity.innerHTML = elemePizza.quantity;
-
+  newDivQuantity.innerHTML = elemePizza.quantity;
 }
 
 // -- CREATION EVENTLISTENER --
