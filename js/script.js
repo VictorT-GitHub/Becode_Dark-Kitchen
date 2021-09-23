@@ -46,7 +46,7 @@ function noResults(){
     }
   }
 
-  const articles = document.querySelectorAll("article");
+  const articles = document.querySelectorAll(".food");
   let yes = 0;
   for (let article of articles){
     if (article.style.display !== "none"){
