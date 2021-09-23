@@ -130,9 +130,9 @@ function activate2(e) {
     e.target.classList.add("active");
     e.target.style.background = "hsl(229, 100%, 76%)";
     e.target.style.color = "white";
-    for (let select of selected){
-      if (select.classList.contains("food")){
-        select.classList.add("active")
+    for (let select of selected) {
+      if (select.classList.contains("food")) {
+        select.classList.add("active");
       }
     }
   } else if (e.target.classList.contains("active")) {
@@ -140,9 +140,9 @@ function activate2(e) {
     e.target.classList.add("inactive");
     e.target.style.background = "inherit";
     e.target.style.color = "inherit";
-    for (let select of selected){
-      if (select.classList.contains("food")){
-        select.classList.remove("active")
+    for (let select of selected) {
+      if (select.classList.contains("food")) {
+        select.classList.remove("active");
       }
     }
   }
@@ -150,17 +150,23 @@ function activate2(e) {
   let arr = ["Vegetarian", "Spicy", "Comfort"];
   let cloneArray = arr.slice();
 
-  let i = 0
-  while (i < cloneArray.length){
-    if (cloneArray[i] === type){
+  let i = 0;
+  while (i < cloneArray.length) {
+    if (cloneArray[i] === type) {
       cloneArray.splice(i, 1);
-    } 
+    }
     i++;
   }
+
   for (let elem of cloneArray){
+
+
     articles = document.querySelectorAll(".food");
-    for (let article of articles){
-      if (article.classList.contains(elem) && article.classList.contains("active")){
+    for (let article of articles) {
+      if (
+        article.classList.contains(elem) &&
+        article.classList.contains("active")
+      ) {
         article.classList.remove("active");
       }
     }
@@ -189,9 +195,13 @@ function displaySection(e) {
     for (article of articles) {
       let parent = article.parentNode;
       if (parent.classList.contains(type + "Section")) {
-        if (filters[4].classList.contains("inactive") && filters[5].classList.contains("inactive") && filters[6].classList.contains("inactive")){
+        if (
+          filters[4].classList.contains("inactive") &&
+          filters[5].classList.contains("inactive") &&
+          filters[6].classList.contains("inactive")
+        ) {
           article.style.display = "flex";
-        } else if (article.classList.contains("active")){
+        } else if (article.classList.contains("active")) {
           article.style.display = "flex";
         } else {
           article.style.display = "none";
@@ -222,22 +232,29 @@ function displayFiltered(e) {
   if (e.target.classList[1] === "active") {
     for (article of articles) {
       let parent = article.parentNode;
-      if (parent.classList.contains("active") && article.classList.contains(filter)) {
+      if (
+        parent.classList.contains("active") &&
+        article.classList.contains(filter)
+      ) {
         article.style.display = "flex";
       } else {
         article.style.display = "none";
       }
-    } 
+    }
   } else {
     const filters = document.querySelectorAll("li a");
-    if (filters[4].classList.contains("inactive") && filters[5].classList.contains("inactive") && filters[6].classList.contains("inactive")){
-      for (article of articles){
+    if (
+      filters[4].classList.contains("inactive") &&
+      filters[5].classList.contains("inactive") &&
+      filters[6].classList.contains("inactive")
+    ) {
+      for (article of articles) {
         let parent = article.parentNode;
-        if (parent.classList.contains("active")){
+        if (parent.classList.contains("active")) {
           article.style.display = "flex";
         }
       }
-    }  
+    }
   }
 
   noResults();
@@ -382,15 +399,13 @@ function cartFunction(leMenu) {
   // COMPTAGE DES ITEM EN DOUBLE, TRIPLE, ETC DANS LE PANIER (part1)
   const fnTrouverPizza = (element) => element.name === leMenu.name;
 
-  const elemePizza = arrayRespons.find(fnTrouverPizza)
-  if(elemePizza !== undefined){
-  elemePizza.quantity++;
-  newDivQuantity.innerHTML = elemePizza.quantity;
-  
-}
+  const elemePizza = arrayRespons.find(fnTrouverPizza);
+  if (elemePizza !== undefined) {
+    elemePizza.quantity++;
+    newDivQuantity.innerHTML = elemePizza.quantity;
+  }
   // Copie de element clické dans arrayRespons
   arrayRespons.push(leMenu);
-
 
   // Creation article + Add class
   const newArticleCart = document.createElement("article");
