@@ -4,7 +4,7 @@ Simple frontend group project - Dark Kitchen e-commerce
 
 **JavaScript** - **CSS3** - **HTML5**
 
-[Look at the result on the GitHub page]()
+[Look at the result on the GitHub page](https://victort-github.github.io/Becode_Dark-Kitchen/)
 
 ## Teamwork
 
